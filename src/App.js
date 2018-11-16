@@ -9,6 +9,7 @@ class App extends Component {
         <img src={Logo} alt="Health & Fit" className="logo"/>
         <h1>Welcome to us!</h1>
         <p>This app helps you to be healthier and fit.</p>
+        <p>This is master branch - do not commit here!</p>
       </div>
     );
   }
