@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Logo from './logo.png';
+//import Logo from './logo.png';
 import './App.css';
 import {
   Collapse,
@@ -8,13 +8,9 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button
+  NavLink  
 } from 'reactstrap';
+import Main from './components/Main';
 
 class App extends Component {
 
@@ -23,14 +19,73 @@ class App extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-        isOpen: false
+        list:[],
+        token:"",
+        isLogged:false,
+        isOpen: false 
     };
 }
+
+componentDidMount(){
+    if (this.state.isLogged){
+      this.getList();
+    }
+    
+}
+
 toggle() {
     this.setState({
         isOpen: !this.state.isOpen
     });
 }
+
+//login API
+
+login = (user) => {
+    let loginObject = {
+        method:"POST",
+        mode:"cors",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(user)
+    }
+    fetch("/login",loginObject).then((response) => {
+        //console.log(response);
+        if(response.ok){
+        response.json().then((data) => {
+            this.setState({
+            token:data.token,
+            isLogged:true
+            })
+            this.getList(data.token);
+        }).catch((error) => {
+            console.log(error)
+        })
+        } else {
+        alert("wrong credentialls");
+        }
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
+register = (user) => {
+    let registerObject = {
+        method:"POST",
+        mode:"cors",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(user)
+    }
+    fetch("/register",registerObject).then((response) => {
+        if(response.ok){
+        alert("Register successful!");
+        } else {
+        alert("Username already in use");
+        }
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
   render() {
     return (
       <div>
@@ -43,34 +98,12 @@ toggle() {
                           <NavLink href="/">Home</NavLink>
                       </NavItem>
                       <NavItem>
-                          <NavLink href="#">User</NavLink>
+                          <NavLink href="/user">User</NavLink>
                       </NavItem>
                   </Nav>
               </Collapse>
           </Navbar>
-          <Jumbotron className="bg-white">
-              <Container>
-                  <Row>
-                      <Col className="text-center mb-4">
-                        <h1>Be healthy and fit!</h1>
-                        <img src={Logo} alt="Health & Fit" className="img-fluid mb-4 logo"/>
-                        <p className="lead">Some text about the our tool (Maryam and Jimi are prepareing this). How it works: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p>Curabitur magna dui, congue id dapibus quis, ultricies ut elit. Integer tempus ultricies odio, at scelerisque dolor condimentum vel. Curabitur et sollicitudin tortor, a venenatis lorem.</p>
-                        <p>Etiam suscipit nunc lectus, in fermentum velit condimentum vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in tempor nisl. Nulla consequat, erat quis finibus hendrerit, mauris quam convallis lectus.</p>
-                        <Button
-                            tag="a"
-                            color="success"
-                            size="large"
-                            href="#"
-                            className="mt-4"                                                                   
-                        >
-                        Become Healthier & Fit
-                        </Button>
-                          
-                      </Col>
-                  </Row>
-              </Container>
-          </Jumbotron>
+          <Main isLogged={this.state.isLogged}/>
       </div>
     );
   }
