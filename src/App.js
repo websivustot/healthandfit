@@ -52,10 +52,11 @@ toggle() {
               <Container>
                   <Row>
                       <Col className="text-center mb-4">
+                        <h1>Be healthy and fit!</h1>
                         <img src={Logo} alt="Health & Fit" className="img-fluid mb-4 logo"/>
-                        <h1>Welcome to us!</h1>
-                        <p className="lead">This app helps you to be healthier and fit.</p>
-                        <p>This is development branch - you should commit here</p>
+                        <p className="lead">Some text about the our tool (Maryam and Jimi are prepareing this). How it works: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Curabitur magna dui, congue id dapibus quis, ultricies ut elit. Integer tempus ultricies odio, at scelerisque dolor condimentum vel. Curabitur et sollicitudin tortor, a venenatis lorem.</p>
+                        <p>Etiam suscipit nunc lectus, in fermentum velit condimentum vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in tempor nisl. Nulla consequat, erat quis finibus hendrerit, mauris quam convallis lectus.</p>
                         <Button
                             tag="a"
                             color="success"

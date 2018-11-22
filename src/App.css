@@ -34,3 +34,13 @@
 .logo {
   margin-top: 20px;
 }
+
+h1 {
+  Font-Family: Roboto;
+  Font-Style: Bold;
+  Font-Size: 30px;
+  Line-Height: 35px;
+  Align: Left;
+  Fill: Solid;
+  color: #00C02A;
+}
