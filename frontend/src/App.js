@@ -67,7 +67,7 @@ login = (user) => {
         console.log(error)
     })
 }
-
+//REGISTER
 register = (user) => {
     let registerObject = {
         method:"POST",
