@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import Logo from './logo.png';
 import './App.css';
 import {
   Collapse,
@@ -11,6 +10,7 @@ import {
   NavLink  
 } from 'reactstrap';
 import Main from './components/Main';
+import {connect} from 'react-redux';
 
 class App extends Component {
 
@@ -26,64 +26,10 @@ class App extends Component {
     };
 }
 
-componentDidMount(){
-    if (this.state.isLogged){
-      this.getList();
-    }
-    
-}
-
 toggle() {
     this.setState({
         isOpen: !this.state.isOpen
     });
-}
-
-//login API
-
-login = (user) => {
-    let loginObject = {
-        method:"POST",
-        mode:"cors",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(user)
-    }
-    fetch("/login",loginObject).then((response) => {
-        //console.log(response);
-        if(response.ok){
-        response.json().then((data) => {
-            this.setState({
-            token:data.token,
-            isLogged:true
-            })
-            this.getList(data.token);
-        }).catch((error) => {
-            console.log(error)
-        })
-        } else {
-        alert("wrong credentialls");
-        }
-    }).catch((error) => {
-        console.log(error)
-    })
-}
-//REGISTER
-register = (user) => {
-    let registerObject = {
-        method:"POST",
-        mode:"cors",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(user)
-    }
-    fetch("/register",registerObject).then((response) => {
-        if(response.ok){
-        alert("Register successful!");
-        } else {
-        alert("Username already in use");
-        }
-    }).catch((error) => {
-        console.log(error)
-    })
 }
 
   render() {
@@ -109,4 +55,10 @@ register = (user) => {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        isLogged:state.isLogged
+    }
+  }
+
+export default connect(mapStateToProps)(App);
