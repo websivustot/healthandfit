@@ -58,8 +58,7 @@ export default class LoginForm extends React.Component {
                             
                 <Button onClick={this.submit}
                         name="login"
-                        className="mr-2 mb-2">Login</Button>
-                            
+                        className="mr-2 mb-2">Login</Button>                         
                     
                 
                 

@@ -7,6 +7,7 @@ import {
     Button
   } from 'reactstrap';
   import Welcome from './Welcome';
+  import Calculator from './Calculator';
   import LoginForm from './LoginForm';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
@@ -35,6 +36,10 @@ class Main extends React.Component {
 
                             <Route path="/list" render={() => 
                                 <h1>List of dishes</h1>
+                            }/>
+
+                            <Route path="/calculator" render={() => 
+                                <Calculator/>
                             }/>
                             
                         </Switch>

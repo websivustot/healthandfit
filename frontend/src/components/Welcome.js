@@ -18,7 +18,7 @@ class Welcome extends React.Component {
                 tag="a"
                 color="success"
                 size="large"
-                href="#"
+                href="/calculator"
                 className="mt-4"                                                                   
             >
             Become Healthier & Fit
