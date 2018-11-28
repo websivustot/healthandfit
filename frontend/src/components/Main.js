@@ -6,9 +6,9 @@ import {
     Jumbotron,
     Button
   } from 'reactstrap';
-  import Welcome from './Welcome';
-  import Calculator from './Calculator';
-  import LoginForm from './LoginForm';
+import Welcome from './Welcome';
+import Calculator from './Calculator';
+import LoginForm from './LoginForm';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
 class Main extends React.Component {

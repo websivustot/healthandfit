@@ -1,7 +1,16 @@
 import React from 'react';
-import { ButtonGroup, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { 
+    ButtonGroup, 
+    Button, 
+    Form, 
+    FormGroup, 
+    Label, 
+    Input, 
+    FormText } from 'reactstrap';
+import {register, login} from '../actions/loginActions';
+import {connect} from 'react-redux';
 
-export default class LoginForm extends React.Component {
+class LoginForm extends React.Component {
 
     constructor(props){
         super(props);
@@ -27,9 +36,9 @@ export default class LoginForm extends React.Component {
             "password":this.state.password
         }
         if(event.target.name === "register") {
-            this.props.register(user)
+            this.props.dispatch(register(user));
         } else {
-            this.props.login(user);
+            this.props.dispatch(login(user));
         }
     }
 
@@ -42,7 +51,7 @@ export default class LoginForm extends React.Component {
                             name="username"
                             onChange={this.onChange}
                             value={this.state.username}/>
-                </FormGroup>                              
+                </FormGroup>                           
                 
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
@@ -51,18 +60,17 @@ export default class LoginForm extends React.Component {
                             onChange={this.onChange}
                             value={this.state.password}/>                            
                 </FormGroup>
-                
+                                
                 <Button onClick={this.submit}
                         name="register"
                         className="mr-2 mb-2">Register</Button>
                             
                 <Button onClick={this.submit}
                         name="login"
-                        className="mr-2 mb-2">Login</Button>                         
-                    
-                
-                
+                        className="mr-2 mb-2">Login</Button>                
             </Form>
         )
     }
 }
+
+export default connect()(LoginForm);
