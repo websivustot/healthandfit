@@ -1,4 +1,4 @@
-See last version is in the "development" branch.
+This project's aim is to learn modern web-technologies such as JS, Node JS, React JS, Redux, MongoDB and related libraries. See the last version is in the "development" branch.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
