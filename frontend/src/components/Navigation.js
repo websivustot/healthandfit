@@ -9,6 +9,7 @@ import {
   NavItem,
   NavLink  
 } from 'reactstrap';
+import UserIcon from './UserIcon';
 import {login,logout} from '../actions/loginActions';
 import {connect} from 'react-redux';
 
@@ -46,12 +47,14 @@ class Navigation extends Component {
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
-                      <NavItem>
+                    <NavItem>
                           <NavLink href="/">Home</NavLink>
                       </NavItem>
-                      <NavItem>
+                      {sessionStorage.getItem("isLogged") ? <NavItem><NavLink href="/" onClick={this.user}><UserIcon/></NavLink></NavItem> : ""}
+                    <NavItem>
                           {sessionStorage.getItem("isLogged") ? <NavLink href="/" onClick={this.logout}>Logout</NavLink> : <NavLink href="/login" onClick={this.login}>Login</NavLink>}
-                      </NavItem>
+                    </NavItem>
+                    
                   </Nav>
               </Collapse>
           </Navbar>     
