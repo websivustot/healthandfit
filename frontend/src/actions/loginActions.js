@@ -37,8 +37,7 @@ export const register = (user) => {
       return dispatch => {
         let loginObject = {
             method:"POST",
-            mode:"cors",
-            
+            mode:"cors",            
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(user)
           }
@@ -72,7 +71,8 @@ export const register = (user) => {
         }
         dispatch(loadingLogin());
         fetch("/logout", logoutObject).then((response) => {
-          if(response.ok){
+            console.log(response);
+            if(response.ok){
             dispatch(logoutSuccess());
           }
           else {

@@ -3,8 +3,7 @@ import {
     Container,
     Row,
     Col,
-    Jumbotron,
-    Button
+    Jumbotron
   } from 'reactstrap';
 import Welcome from './Welcome';
 import Calculator from './Calculator';
@@ -23,19 +22,29 @@ class Main extends React.Component {
                         <Switch>
                             <Route exact path="/" render={() => 
                                 this.props.isLogged ?
-                                (<Redirect to="/list"/>) :
+                                (<h1>List of dishes</h1>) :
                                 (<Welcome/>)
                             }/>
 
-                            <Route exact path="/user" render={() => 
+                            <Route exact path="/login" render={() => 
                                 this.props.isLogged ?
-                                (<Redirect to="/user/id"/>) :
+                                (<Redirect to="/list"/>) :
                                 (<LoginForm login={this.props.login}
                                     register={this.props.register}/>)
-                            }/>
+                            }/>                            
 
                             <Route path="/list" render={() => 
-                                <h1>List of dishes</h1>
+                                this.props.isLogged ?
+                                (<h1>List of dishes</h1>) :
+                                (<LoginForm login={this.props.login}
+                                    register={this.props.register}/>)                               
+                                
+                            }/>
+
+                            <Route path="/logout" render={() => 
+                                (<LoginForm login={this.props.login}
+                                register={this.props.register}/>)                               
+                                
                             }/>
 
                             <Route path="/calculator" render={() => 

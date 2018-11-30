@@ -9,13 +9,14 @@ import {
 } from '../actions/loginActions';
 
 function getInitialState(){
+    let error="";
     if(sessionStorage.getItem("isLogged")){
         if(sessionStorage.getItem("isLogged")){
             let tempIsLogged = false
             if(sessionStorage.getItem("isLogged") === "true"){
                 tempIsLogged = true
             }
-            let error="";
+            
             if(sessionStorage.getItem("login_error")){
                 error = sessionStorage.getItem("login_error")
             }
@@ -29,17 +30,19 @@ function getInitialState(){
         return {
             isLogged:false,
             loading:false,
-            error:""
+            error:error
         }
     }
 }
 
 function saveToStorage(isLogged, error){
     sessionStorage.setItem("isLogged",isLogged);
-    sessionStorage.setItem("error","");
+    sessionStorage.setItem("error",error);
 }
 
 let initialState = getInitialState();
+
+//console.log(initialState);
 
 const loginReducer = (state = initialState,action) => {
     console.log("loginReducer, action:"+action.type);
@@ -92,6 +95,7 @@ const loginReducer = (state = initialState,action) => {
                 loading:false
             }
             sessionStorage.clear();
+            console.log("session storage clear");
             return tempState;
             
         case LOGOUT_FAILED:

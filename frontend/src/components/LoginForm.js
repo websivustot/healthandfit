@@ -1,12 +1,10 @@
 import React from 'react';
-import { 
-    ButtonGroup, 
+import {     
     Button, 
     Form, 
     FormGroup, 
     Label, 
-    Input, 
-    FormText } from 'reactstrap';
+    Input} from 'reactstrap';
 import {register, login} from '../actions/loginActions';
 import {connect} from 'react-redux';
 
@@ -27,7 +25,7 @@ class LoginForm extends React.Component {
     }
 
     submit = (event) => {
-        event.preventDefault();
+        
         if (this.state.username.length === 0 || this.state.password.length === 0) {
             return
         }
@@ -60,7 +58,7 @@ class LoginForm extends React.Component {
                             onChange={this.onChange}
                             value={this.state.password}/>                            
                 </FormGroup>
-                                
+
                 <Button onClick={this.submit}
                         name="register"
                         className="mr-2 mb-2">Register</Button>
