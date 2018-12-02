@@ -31,59 +31,60 @@ export const register = (user) => {
           })
     }
     
-   }
+}
 
-  export const login = (user) => {
-      return dispatch => {
-        let loginObject = {
-            method:"POST",
-            mode:"cors",            
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(user)
-          }
-          dispatch(loadingLogin());
-          fetch("/login",loginObject).then((response) => {
-            //console.log(response);
-            if(response.ok){
-              response.json().then((data) => {
-                dispatch(loginSuccess());
-              }).catch((error) => {
-                dispatch(loginFailed("server responded with error"));
-              })
-            } else {
-              dispatch(loginFailed("wrong credentials"));
-            }
-          }).catch((error) => {
-              dispatch(loginFailed("server responded with error"));
-          })
-      }
-    
-   }
-
-   export const logout = () => {
-       return dispatch => {
-        console.log("logout");
-        let logoutObject = {
-          method:"POST",
-          mode:"cors",
-          credentialls:"include",
-          headers:{"Content-Type":"application/json"}
+export const login = (user) => {
+    return dispatch => {
+    let loginObject = {
+        method:"POST",
+        mode:"cors",            
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(user)
         }
         dispatch(loadingLogin());
-        fetch("/logout", logoutObject).then((response) => {
-            console.log(response);
-            if(response.ok){
-            dispatch(logoutSuccess());
-          }
-          else {
-              dispatch(logoutFailed("server responted with status:"+response.status))            
-          }
+        fetch("/login",loginObject).then((response) => {
+        //console.log(response);
+        if(response.ok){
+            response.json().then((data) => {
+            dispatch(loginSuccess());
+            }).catch((error) => {
+            dispatch(loginFailed("server responded with error"));
+            })
+        } else {
+            dispatch(loginFailed("wrong credentials"));
+        }
         }).catch((error) => {
-            dispatch(logoutFailed("server responted with error"))
+            dispatch(loginFailed("server responded with error"));
         })
-       }
+    }
     
-  }
+}
+
+export const logout = () => {
+    return dispatch => {
+    console.log("logout");
+    let logoutObject = {
+        method:"POST",
+        mode:"cors",
+        credentialls:"include",
+        headers:{"Content-Type":"application/json"}
+    }
+    dispatch(loadingLogin());
+    fetch("/logout", logoutObject).then((response) => {
+        console.log(response);
+        if(response.ok){
+        dispatch(logoutSuccess());
+        }
+        else {
+            dispatch(logoutFailed("server responted with status:"+response.status))            
+        }
+    }).catch((error) => {
+        dispatch(logoutFailed("server responted with error"))
+    })
+    }
+    
+}
+
 //Action creators
 
 const registerSuccess = () => {
@@ -130,4 +131,3 @@ const loadingLogin = () => {
         type:LOGIN_LOADING        
     }
 }
-

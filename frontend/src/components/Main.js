@@ -47,8 +47,8 @@ class Main extends React.Component {
                                 
                             }/>
 
-                            <Route path="/calculator" render={() => 
-                                <Calculator/>
+                            <Route path="/calculator" render={() =>                                 
+                                <Calculator /> 
                             }/>
                             
                         </Switch>

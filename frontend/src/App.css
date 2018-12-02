@@ -44,3 +44,13 @@ h1 {
   Fill: Solid;
   color: #00C02A;
 }
+
+.big {
+  Font-Family: Roboto;
+  Font-Style: Bold;
+  Font-Size: 50px;
+  Line-Height: 65px;
+  Align: Left;
+  Fill: Solid;
+  color: #00C02A;
+}
