@@ -6,9 +6,7 @@ import {connect} from 'react-redux';
 
 class App extends Component {
 
-  render() {   
-    console.log("this.props.isLogged="+this.props.isLogged
-                +" sessionStorage="+sessionStorage.getItem("isLogged"))       
+  render() {             
     return (
       <div>
           <Navigation></Navigation>

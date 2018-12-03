@@ -12,9 +12,16 @@ class LoginForm extends React.Component {
 
     constructor(props){
         super(props);
+        let user = sessionStorage.getItem("user");
+        console.log(user);
         this.state = {
             username:"",
-            password:""
+            password:"",
+            height:user.height,
+            weight:user.weight,
+            gender:user.gender,
+            age:user.age,
+            activity:user.activity
         }
     }
 
@@ -31,7 +38,12 @@ class LoginForm extends React.Component {
         }
         let user = {
             "username":this.state.username,
-            "password":this.state.password
+            "password":this.state.password,
+            "height":this.state.height,
+            "weight":this.state.weight,
+            "gender":this.state.gender,
+            "age":this.state.age,
+            "activity":this.state.activity
         }
         if(event.target.name === "register") {
             this.props.dispatch(register(user));

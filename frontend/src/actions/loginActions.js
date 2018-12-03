@@ -9,6 +9,7 @@ export const LOGIN_LOADING = "LOGIN_LOADING";
 //Actions
 
 export const register = (user) => {
+    console.log("USER: "+user);
     return dispatch => {
         let registerObject = {
             method:"POST",
@@ -33,7 +34,7 @@ export const register = (user) => {
     
 }
 
-export const login = (user) => {
+export const login = (user) => {    
     return dispatch => {
     let loginObject = {
         method:"POST",

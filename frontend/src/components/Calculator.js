@@ -2,6 +2,8 @@ import React from 'react';
 import {
     Button, Form, FormGroup, Label, Input, CustomInput
   } from 'reactstrap';
+  import {register} from '../actions/loginActions';
+  import {connect} from 'react-redux';
 
 class Calculator extends React.Component {     
     
@@ -63,13 +65,12 @@ class Calculator extends React.Component {
         }
 
         this.calculate(user);
-        /*
+        
         if(event.target.name === "register") {
-            this.props.register(user)
-        } else {
-            this.props.login(user);
-        }
-        */
+            //this.props.dispatch(register(user));
+            sessionStorage.setItem("user",JSON.stringify(user));
+        } 
+        
        //console.log(user);
     }
 
@@ -166,17 +167,23 @@ class Calculator extends React.Component {
             
         </Form></>;
 
-        const result = this.state.calculationResult ? <h1>Your daily calorie needs <span className="big">{this.state.calculationResult}</span> cal</h1> : "";
+        const result = this.state.calculationResult 
+        ? 
+        <><h1>Your daily calorie needs <span className="big">{this.state.calculationResult}</span> cal</h1>
+        <Button     onClick={this.submit} 
+                    name="register"
+                    href="/login"                                                                                 
+                    className="mt-4">Save data and continue</Button></> 
+        : "";
        
         return(
             <>
             {form}
-            {result}
-            
+            {result}            
             </>              
                     
         )
     }
 }
 
-export default Calculator;
+export default connect()(Calculator);
