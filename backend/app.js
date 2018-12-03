@@ -35,7 +35,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function(user,done){
-    console.log("serializeUser:"+user.username);
+    console.log("serializeUser:"+user.username+user.activity);
     done(null,user._id);
 
 });
@@ -103,7 +103,9 @@ app.post("/logout", function(req,res){
 
 app.post("/register", function(req,res){
 
-    //console.log("req.body"+req.body);
+    console.log("req.body"+req.body.username);
+    console.log("req.body"+req.body.height);
+    console.log("req.body.needs"+req.body.needs);
 
     if(!req.body.username || !req.body.password){
         return res.status(409).json({"message":"provide credentials"})
@@ -113,7 +115,13 @@ app.post("/register", function(req,res){
     }
     let user = new userModel({
         "username":req.body.username,
-        "password":createSaltedPassword(req.body.password)
+        "password":createSaltedPassword(req.body.password),
+        "height":req.body.height,
+        "weight":req.body.weight,
+        "gender":req.body.gender,
+        "age":req.body.age,
+        "activity":req.body.activity,
+        "needs":req.body.needs
     })
 
     user.save(function(err){

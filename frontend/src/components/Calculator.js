@@ -40,9 +40,9 @@ class Calculator extends React.Component {
 
         let result = user.gender ? bmr + 5 : bmr - 161;
         result = Math.round(result * user.activity);
-        this.setState({calculationResult:result});
-        console.log(user,bmr,result);
-        
+        this.setState({calculationResult: result});
+        console.log("RESULT: ",result,"STATE:",this.state); 
+        return result;               
     }
 
     submit = (event) => {
@@ -60,11 +60,13 @@ class Calculator extends React.Component {
             "weight":this.state.weight,
             "gender":this.state.gender,
             "age":this.state.age,
-            "activity":this.state.activity
+            "activity":this.state.activity,
+            "needs":this.state.calculationResult
 
-        }
+        }       
 
-        this.calculate(user);
+        user.needs = this.calculate(user);
+        console.log("user",user)
         
         if(event.target.name === "register") {
             //this.props.dispatch(register(user));
@@ -165,8 +167,7 @@ class Calculator extends React.Component {
                     name="calculate"                        
                     className="mt-4">Calculate</Button>     
             
-        </Form></>;
-
+        </Form></>;        
         const result = this.state.calculationResult 
         ? 
         <><h1>Your daily calorie needs <span className="big">{this.state.calculationResult}</span> cal</h1>

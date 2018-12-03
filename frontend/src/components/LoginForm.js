@@ -12,17 +12,27 @@ class LoginForm extends React.Component {
 
     constructor(props){
         super(props);
-        let user = sessionStorage.getItem("user");
-        console.log(user);
+        let user = JSON.parse(sessionStorage.getItem("user"));
+        //console.log("user from storage: "+user.activity+user.needs);
         this.state = {
             username:"",
             password:"",
-            height:user.height,
-            weight:user.weight,
-            gender:user.gender,
-            age:user.age,
-            activity:user.activity
+            height:"",
+            weight:"",
+            gender:"",
+            age:"",
+            activity:"",
+            needs:""
         }
+        if (user) {
+            this.state.height = user.height;
+            this.state.weight = user.weight;
+            this.state.gender = user.gender;
+            this.state.age = user.age;
+            this.state.activity = user.activity;
+            this.state.needs = user.needs;
+        }        
+        
     }
 
     onChange = (event) => {
@@ -43,9 +53,11 @@ class LoginForm extends React.Component {
             "weight":this.state.weight,
             "gender":this.state.gender,
             "age":this.state.age,
-            "activity":this.state.activity
+            "activity":this.state.activity,
+            "needs":this.state.needs
         }
         if(event.target.name === "register") {
+            console.log("loginform-register: "+user.username+user.activity)
             this.props.dispatch(register(user));
         } else {
             this.props.dispatch(login(user));
