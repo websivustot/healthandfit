@@ -8,6 +8,7 @@ import {
 import Welcome from './Welcome';
 import Calculator from './Calculator';
 import LoginForm from './LoginForm';
+import DailyList from './DailyList';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
 class Main extends React.Component {
@@ -22,7 +23,7 @@ class Main extends React.Component {
                         <Switch>
                             <Route exact path="/" render={() => 
                                 this.props.isLogged ?
-                                (<h1>List of dishes</h1>) :
+                                (<DailyList/>) :
                                 (<Welcome/>)
                             }/>
 
@@ -35,7 +36,7 @@ class Main extends React.Component {
 
                             <Route path="/list" render={() => 
                                 this.props.isLogged ?
-                                (<h1>List of dishes</h1>) :
+                                (<DailyList/>) :
                                 (<LoginForm login={this.props.login}
                                     register={this.props.register}/>)                               
                                 

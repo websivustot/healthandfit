@@ -1,8 +1,7 @@
 import React from 'react';
 import {
     Button, Form, FormGroup, Label, Input, CustomInput
-  } from 'reactstrap';
-  import {register} from '../actions/loginActions';
+  } from 'reactstrap';  
   import {connect} from 'react-redux';
 
 class Calculator extends React.Component {     
