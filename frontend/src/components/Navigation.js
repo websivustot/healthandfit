@@ -67,11 +67,11 @@ const mapStateToProps = (state) => {
     //console.log(state);
     let loading = false;
     let error = "";
-    if(state.login.loading || state.shopping.loading) {
+    if(state.login.loading || state.food.loading) {
         loading = true;
     }
-    if (state.shopping.error.length > 0){
-        error = state.shopping.error
+    if (state.food.error.length > 0){
+        error = state.food.error
     }
     if (state.login.error !== 0){
         error = state.login.error

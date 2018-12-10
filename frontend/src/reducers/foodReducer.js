@@ -1,11 +1,11 @@
 import {
-    GET_SHOPPINGLIST_SUCCESS,
-    GET_SHOPPINGLIST_FAILED,
-    ADD_TO_SHOPPINGLIST_SUCCESS,
-    ADD_TO_SHOPPINGLIST_FAILED,
-    DELETE_FROM_SHOPPINGLIST_SUCCESS,
-    DELETE_FROM_SHOPPINGLIST_FAILED,
-    SHOPPINGLIST_LOADING} from '../actions/shoppingActions';
+    GET_FOODLIST_SUCCESS,
+    GET_FOODLIST_FAILED,
+    ADD_TO_FOODLIST_SUCCESS,
+    ADD_TO_FOODLIST_FAILED,
+    DELETE_FROM_FOODLIST_SUCCESS,
+    DELETE_FROM_FOODLIST_FAILED,
+    FOODLIST_LOADING} from '../actions/foodActions';
 
     function getInitialState() {
         let list = []
@@ -13,8 +13,8 @@ import {
             list = sessionStorage.getItem("list");
         }
         let error = ""
-        if(sessionStorage.getItem("shopping_error")) {
-            error = sessionStorage.getItem("shopping_error");
+        if(sessionStorage.getItem("food_error")) {
+            error = sessionStorage.getItem("food_error");
         }
         return {
             list:list,
@@ -24,16 +24,16 @@ import {
     }
     
     function saveToStorage(list,error) {
-        sessionStorage.setItem("shopping_error",error);
+        sessionStorage.setItem("food_error",error);
     }
     
     let initialState = getInitialState();
     
-    export const shoppingReducer = (state = initialState, action) => {
-        console.log("ShoppingReducer - action:"+action.type)
+    export const foodReducer = (state = initialState, action) => {
+        console.log("FoodReducer - action:"+action.type)
         let tempState = {};
         switch(action.type) {
-            case GET_SHOPPINGLIST_SUCCESS:
+            case GET_FOODLIST_SUCCESS:
                 tempState = {
                     list:action.list,
                     error:"",
@@ -41,7 +41,7 @@ import {
                 }
                 saveToStorage(action.list,"");
                 return tempState;
-            case GET_SHOPPINGLIST_FAILED:
+            case GET_FOODLIST_FAILED:
                 tempState = {
                     ...state,
                     error:action.error,
@@ -49,14 +49,14 @@ import {
                 }
                 saveToStorage(state.list,action.error);
                 return tempState;
-            case ADD_TO_SHOPPINGLIST_SUCCESS:
+            case ADD_TO_FOODLIST_SUCCESS:
                 tempState = {
                     ...state,
                     error:""
                 }
                 saveToStorage(state.list,"");
                 return tempState;
-            case ADD_TO_SHOPPINGLIST_FAILED:
+            case ADD_TO_FOODLIST_FAILED:
                 tempState = {
                     ...state,
                     loading:false,
@@ -64,14 +64,14 @@ import {
                 }
                 saveToStorage(state.list,action.error);
                 return tempState;
-            case DELETE_FROM_SHOPPINGLIST_SUCCESS:
+            case DELETE_FROM_FOODLIST_SUCCESS:
                 tempState = {
                     ...state,
                     error:""
                 }
                 saveToStorage(state.list,"");
                 return tempState;
-            case DELETE_FROM_SHOPPINGLIST_FAILED:
+            case DELETE_FROM_FOODLIST_FAILED:
                 tempState = {
                     ...state,
                     error:action.error,
@@ -79,7 +79,7 @@ import {
                 }
                 saveToStorage(state.list,action.error);
                 return tempState;
-            case SHOPPINGLIST_LOADING:
+            case FOODLIST_LOADING:
                 tempState = {
                     ...state,
                     loading:true

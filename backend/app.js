@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const shoppingrouter = require("./routes/shoppingrouter");
+const foodrouter = require("./routes/foodrouter");
 const mongoose = require("mongoose");
 const userModel = require("./models/user");
 const bcrypt = require("bcrypt-nodejs");
@@ -155,7 +155,7 @@ function createToken(){
     return token;
 }
 
-app.use("/api", isUserLogged, shoppingrouter);
+app.use("/api", isUserLogged, foodrouter);
 
 //app.listen(3001 || process.env.PORT)
 app.listen(3001);

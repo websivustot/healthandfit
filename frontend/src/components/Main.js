@@ -9,6 +9,7 @@ import Welcome from './Welcome';
 import Calculator from './Calculator';
 import LoginForm from './LoginForm';
 import DailyList from './DailyList';
+import FoodList from './FoodList';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
 class Main extends React.Component {
@@ -40,6 +41,13 @@ class Main extends React.Component {
                                 (<LoginForm login={this.props.login}
                                     register={this.props.register}/>)                               
                                 
+                            }/>
+
+                            <Route path="/foodlist" render={() => 
+                                this.props.isLogged ?
+                                (<FoodList list={this.props.list}
+                                    removeFromList={this.props.removeFromList}/>) :
+                                    (<Redirect to="/"/>)
                             }/>
 
                             <Route path="/logout" render={() => 
