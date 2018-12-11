@@ -10,7 +10,9 @@ class App extends Component {
     return (
       <div>
           <Navigation></Navigation>
-          <Main isLogged={this.props.isLogged}/>
+          <Main 
+            isLogged={this.props.isLogged}            
+            />
       </div>
     );
   }

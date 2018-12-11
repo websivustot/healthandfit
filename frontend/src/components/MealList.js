@@ -25,7 +25,7 @@ class MealList extends React.Component {
 
     render(){
         const list = this.props.list;
-        console.log(list)
+        //console.log(list)
             return(
                 <>
                 <Row>

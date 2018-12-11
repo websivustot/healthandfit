@@ -10,11 +10,13 @@ import Calculator from './Calculator';
 import LoginForm from './LoginForm';
 import DailyList from './DailyList';
 import FoodList from './FoodList';
+import FoodForm from './FoodForm';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
 class Main extends React.Component {
 
     render(){
+        console.log(this.props)
         return(
             <Jumbotron className="bg-white">
               <Container>
@@ -49,6 +51,12 @@ class Main extends React.Component {
                                     removeFromList={this.props.removeFromList}/>) :
                                     (<Redirect to="/"/>)
                             }/>
+
+                            <Route path="/foodform" render={() => 
+                                this.props.isLogged ?
+                                (<FoodForm addToList={this.props.addToList}/>) :
+                                    (<Redirect to="/"/>)
+                             }/> 
 
                             <Route path="/logout" render={() => 
                                 (<LoginForm login={this.props.login}

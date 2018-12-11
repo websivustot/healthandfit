@@ -10,6 +10,7 @@ class FoodList extends React.Component {
 
     componentDidMount(){
         if(this.props.isLogged){
+            console.log("logged")
             this.props.dispatch(getList());
         }
     }
@@ -21,6 +22,7 @@ class FoodList extends React.Component {
     
 
     render(){
+        console.log(this.props)
       let items = this.props.list.map((item) => {
             return <tr key={item._id}>
                 <td>{item.type}</td>

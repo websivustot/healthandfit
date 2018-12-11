@@ -135,12 +135,9 @@ app.post("/register", function(req,res){
 });
 
 function isUserLogged(req,res,next){
-    let token = req.headers.token;
-    for(let i=0;i<loggedUsers.length;i++){
-        if(token === loggedUsers[i].token){
-            req.username = loggedUsers[i].username;
-            return next();
-        }
+    //let token = req.headers.token;    
+    if(req.isAuthenticated()){
+        return next();
     }
     res.status(403).json({"message":"not allowed"});
 }
