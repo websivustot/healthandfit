@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getList,removeFromList} from '../actions/foodActions';
 import {
-    Container, Row, Col, NavLink, Button, Table, Collapse
+    Button, Table
   } from 'reactstrap';
 
 

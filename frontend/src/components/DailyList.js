@@ -1,13 +1,9 @@
 import React from 'react';
-import Logo from '../logo.png';
 import {
-    Container, Row, Col, NavLink, Button, Table, Collapse
+    Container, Row, Col, NavLink
   } from 'reactstrap';
 import GoLeft from './GoLeft';
 import GoRight from './GoRight';
-import GoDown from './GoDown';
-import GoUp from './GoUp';
-import Plus from './Plus';
 import MealList from './MealList';
 import list from '../list';
 

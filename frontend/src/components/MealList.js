@@ -1,9 +1,8 @@
 import React from 'react';
 import {
-    Container, Row, Col, NavLink, Button, Table, Collapse
+    Row, Col, NavLink, Table, Collapse
   } from 'reactstrap';
-  import GoDown from './GoDown';
-  import GoUp from './GoUp';
+  import GoDown from './GoDown';  
   import Plus from './Plus';
   import MealItem from './MealItem';
 

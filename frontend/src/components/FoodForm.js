@@ -14,10 +14,11 @@ class FoodForm extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            type:"",
-            count:0,
-            price:0
-            
+            foodname:"",
+            energy:0,
+            carbohydrate:0,
+            fat:0,
+            protein:0            
         }
     }
 
@@ -25,9 +26,11 @@ class FoodForm extends React.Component {
         event.preventDefault();
         
         let item = {
-            "type":this.state.type,
-            "count":this.state.count,
-            "price":this.state.price
+            "foodname":this.state.foodname,
+            "energy":this.state.energy,
+            "carbohydrate":this.state.carbohydrate,
+            "fat":this.state.fat,
+            "protein":this.state.protein
         }
         //console.log(this.props);
         this.props.dispatch(addToList(item));
