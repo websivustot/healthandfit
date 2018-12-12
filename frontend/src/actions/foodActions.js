@@ -8,6 +8,7 @@ export const FOODLIST_LOADING = "FOODLIST_LOADING";
 
 //actions
 export const getList = () => {
+    
     return dispatch => {
     
     let getObject = {
@@ -18,9 +19,11 @@ export const getList = () => {
     }
     dispatch(foodListLoading());
     fetch("/api/food", getObject).then((response) => {
-      //console.log(response);
+      //console.log("getlist response",response.json());
         if(response.ok) {
+            console.log("++++",response)
           response.json().then((data) => {
+              
            dispatch(getFoodListSuccess(data));                   
             }).catch((error) => {
               dispatch(getFoodListFailed("problem loading food list")); 
@@ -81,10 +84,11 @@ export const removeFromList = (id) => {
 }
 //action creators
 
-const getFoodListSuccess = (list) => {
+const getFoodListSuccess = (foodlist) => {
+    console.log("getlistsuccess",foodlist)    
     return {
         type:GET_FOODLIST_SUCCESS,
-        list:list        
+        foodlist:foodlist        
     }
 }
 

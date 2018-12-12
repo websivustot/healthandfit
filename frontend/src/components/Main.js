@@ -16,7 +16,7 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 class Main extends React.Component {
 
     render(){
-        console.log(this.props)
+        console.log("main",this.props)
         return(
             <Jumbotron className="bg-white">
               <Container>
@@ -47,7 +47,8 @@ class Main extends React.Component {
 
                             <Route path="/foodlist" render={() => 
                                 this.props.isLogged ?
-                                (<FoodList list={this.props.list}
+                                (<FoodList foodlist={this.props.foodlist}
+                                    isLogged={this.props.isLogged}
                                     removeFromList={this.props.removeFromList}/>) :
                                     (<Redirect to="/"/>)
                             }/>

@@ -19,7 +19,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state, state.login.isLogged)
+    console.log("app",state, state.login.isLogged)
     return {
         isLogged:state.login.isLogged
     }

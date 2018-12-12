@@ -7,7 +7,7 @@ let Schema = mongoose.Schema({
     fat:Number,
     protein:Number,
     date: { type: Date, default: Date.now },
-    user_id:Number
+    user:String
 
 })
 

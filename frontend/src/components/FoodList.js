@@ -8,6 +8,11 @@ import {
 
 class FoodList extends React.Component {
 
+    constructor(props){
+        super(props)
+        console.log("constructor",props)        
+    }
+
     componentDidMount(){
         if(this.props.isLogged){
             console.log("logged")
@@ -22,26 +27,30 @@ class FoodList extends React.Component {
     
 
     render(){
-        console.log(this.props)
-      let items = this.props.list.map((item) => {
+        console.log("foodlist",this.props)
+      let items = this.props.foodlist.map((item) => {
             return <tr key={item._id}>
-                <td>{item.type}</td>
-                <td>{item.count}</td>
-                <td>{item.price}</td>                
+                <td>{item.foodname}</td>
+                <td>{item.energy}</td>
+                <td>{item.carbohydrate}</td>
+                <td>{item.fat}</td>
+                <td>{item.proteine}</td>                                
                 <td><Button onClick={this.remove}
                             name={item._id}
                 >Remove</Button></td>
             </tr>
-      })  
+      }) 
+      //let items = "123" 
       
       return (
           <Table>
               
                   <tr>
-                      <th>Type</th>
-                      <th>Count</th>
-                      <th>Price</th>
-                      <th>Remove</th>
+                      <th>Name</th>
+                      <th>Energy</th>
+                      <th>Carbohydrate</th>
+                      <th>Fat</th>
+                      <th>Proteine</th>
                   </tr>
                   
                   <tbody>
@@ -56,7 +65,8 @@ class FoodList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        isLogged:state.isLogged
+        isLogged:state.login.isLogged,
+        foodlist:state.food.foodlist
     }
 }
 
