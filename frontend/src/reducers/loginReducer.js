@@ -51,8 +51,7 @@ let initialState = getInitialState();
 //console.log(initialState);
 
 const loginReducer = (state = initialState,action) => {
-    console.log("loginReducer, action:",action.username);
-
+    console.log("loginReducer, action:",action);
     let tempState = {};
     switch(action.type){
         case LOGIN_LOADING:
@@ -81,10 +80,10 @@ const loginReducer = (state = initialState,action) => {
                 isLogged:true,                
                 error:"",
                 loading:false,
-                userName:action.username
+                userName:sessionStorage.getItem("userName")
                 
             }
-            saveToStorage("true","",state.userName);
+            saveToStorage("true","",tempState.userName);
             return tempState;
 
         case LOGIN_FAILED:

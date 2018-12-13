@@ -9,9 +9,12 @@ class App extends Component {
   render() {             
     return (
       <div>
-          <Navigation></Navigation>
+          <Navigation
+            isLogged={this.props.isLogged} 
+            userName={this.props.userName}/>
           <Main 
-            isLogged={this.props.isLogged}            
+            isLogged={this.props.isLogged} 
+            userName={this.props.userName}           
             />
       </div>
     );
@@ -19,7 +22,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("app",state, state.login.isLogged)
+    console.log("app",state)
     return {
         isLogged:state.login.isLogged,
         userName:state.login.userName

@@ -43,11 +43,11 @@ export const login = (user) => {
         body:JSON.stringify(user)
         }
         dispatch(loadingLogin());
-        fetch("/login",loginObject).then((response) => {
-        //console.log(response);
-        if(response.ok){
-            response.json().then((data) => {
-            dispatch(loginSuccess(user.username));            
+        fetch("/login",loginObject).then((response) => {        
+        if(response.ok){            
+            response.json().then((data) => {  
+                sessionStorage.setItem("userName",data.username);                            
+                dispatch(loginSuccess());            
             }).catch((error) => {
             dispatch(loginFailed("server responded with error "+error));
             })

@@ -50,9 +50,13 @@ class Navigation extends Component {
                     <NavItem>
                           <NavLink href="/">Home</NavLink>
                       </NavItem>
-                      {this.props.isLogged ? <NavItem><NavLink href="/" onClick={this.user}><UserIcon/> {this.props.userName}</NavLink></NavItem> : ""}
+                      {this.props.isLogged ? 
+                      <NavItem><NavLink href="/" onClick={this.user}>
+                      <UserIcon/> {this.props.userName}</NavLink></NavItem> : ""}
                     <NavItem>
-                          {this.props.isLogged ? <NavLink href="/" onClick={this.logout}>Logout</NavLink> : <NavLink href="/login" onClick={this.login}>Login</NavLink>}
+                          {this.props.isLogged ? 
+                          <NavLink href="/" onClick={this.logout}>Logout</NavLink> : 
+                          <NavLink href="/login" onClick={this.login}>Login</NavLink>}
                     </NavItem>
                     
                   </Nav>

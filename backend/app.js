@@ -91,7 +91,7 @@ function isPasswordValid(pw,hash) {
 
 app.post("/login", 
 passport.authenticate("local-login",{failureRedirect:"/"}), function(req,res){
-        return res.status(200).json({"token":req.session.token})   
+        return res.status(200).json({"token":req.session.token,"username":req.session.username})   
 });
 
 app.post("/logout", function(req,res){
