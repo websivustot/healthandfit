@@ -10,12 +10,14 @@ import {
 } from '../actions/loginActions';
 
 function getInitialState(){
-    let error="";
+    let error="";    
     if(sessionStorage.getItem("isLogged")){
         if(sessionStorage.getItem("isLogged")){
             let tempIsLogged = false
+            let tempUserName = "";
             if(sessionStorage.getItem("isLogged") === "true"){
-                tempIsLogged = true
+                tempIsLogged = true;
+                tempUserName = sessionStorage.getItem("userName");
             }
             
             if(sessionStorage.getItem("login_error")){
@@ -24,21 +26,24 @@ function getInitialState(){
             return {
                 isLogged:tempIsLogged,
                 loading:false,
-                error:sessionStorage.getItem("login_error")
+                error:sessionStorage.getItem("login_error"),
+                userName:tempUserName
             }
         }
     } else {
         return {
             isLogged:false,
             loading:false,
-            error:error
+            error:error,
+            userName:""
         }
     }
 }
 
-function saveToStorage(isLogged, error){
+function saveToStorage(isLogged, error, userName){
     sessionStorage.setItem("isLogged",isLogged);
     sessionStorage.setItem("error",error);
+    sessionStorage.setItem("userName",userName);
 }
 
 let initialState = getInitialState();
@@ -46,7 +51,7 @@ let initialState = getInitialState();
 //console.log(initialState);
 
 const loginReducer = (state = initialState,action) => {
-    console.log("loginReducer, action:"+action.type);
+    console.log("loginReducer, action:",action.username);
 
     let tempState = {};
     switch(action.type){
@@ -62,22 +67,24 @@ const loginReducer = (state = initialState,action) => {
                 error:"",
                 loading:false
             }
-            saveToStorage(state.isLogged,"");
+            saveToStorage(state.isLogged,"",state.userName);
             return tempState;
         case REGISTER_FAILED:
             tempState = {
                 ...state,
                 error:action.error
             }
-            saveToStorage(state.isLogged,action.error);
+            saveToStorage(state.isLogged,action.error,"");
             return tempState;
         case LOGIN_SUCCESS:
             tempState = {
-                isLogged:true,
+                isLogged:true,                
                 error:"",
-                loading:false
+                loading:false,
+                userName:action.username
+                
             }
-            saveToStorage("true","");
+            saveToStorage("true","",state.userName);
             return tempState;
 
         case LOGIN_FAILED:
@@ -86,14 +93,15 @@ const loginReducer = (state = initialState,action) => {
                 error:action.error,
                 loading:false
             }
-            saveToStorage(state.isLogged,action.error);
+            saveToStorage(state.isLogged,action.error,"");
             return tempState;
 
         case LOGOUT_SUCCESS:
             tempState = {
                 isLogged:false,
                 error:"",
-                loading:false
+                loading:false,
+                userName:""
             }
             sessionStorage.clear();
             console.log("session storage clear");
@@ -103,9 +111,9 @@ const loginReducer = (state = initialState,action) => {
             tempState = {
                 ...state,
                 error:action.error,
-                loading:false
+                loading:false,
             }
-            saveToStorage(state.isLogged,action.error);
+            saveToStorage(state.isLogged,action.error,state.userName);
             return tempState;
         default:
             return state

@@ -40,7 +40,7 @@ class Navigation extends Component {
     }
 
   render() {               
-    //console.log(this.props,sessionStorage.getItem("isLogged"));
+    console.log("navigation",this.props);
     return (      
           <Navbar color="dark" dark expand="md">
               <NavbarBrand href="/">HEALTH & FIT</NavbarBrand>
@@ -50,9 +50,9 @@ class Navigation extends Component {
                     <NavItem>
                           <NavLink href="/">Home</NavLink>
                       </NavItem>
-                      {sessionStorage.getItem("isLogged") ? <NavItem><NavLink href="/" onClick={this.user}><UserIcon/></NavLink></NavItem> : ""}
+                      {this.props.isLogged ? <NavItem><NavLink href="/" onClick={this.user}><UserIcon/> {this.props.userName}</NavLink></NavItem> : ""}
                     <NavItem>
-                          {sessionStorage.getItem("isLogged") ? <NavLink href="/" onClick={this.logout}>Logout</NavLink> : <NavLink href="/login" onClick={this.login}>Login</NavLink>}
+                          {this.props.isLogged ? <NavLink href="/" onClick={this.logout}>Logout</NavLink> : <NavLink href="/login" onClick={this.login}>Login</NavLink>}
                     </NavItem>
                     
                   </Nav>
@@ -77,9 +77,10 @@ const mapStateToProps = (state) => {
         error = state.login.error
     }
     return {
-        isLogged:state.isLogged,
+        isLogged:state.login.isLogged,
         loading:loading,
-        loginError:error
+        loginError:error,
+        userName:state.login.userName
     }
 }
 

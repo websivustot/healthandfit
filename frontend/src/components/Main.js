@@ -48,7 +48,7 @@ class Main extends React.Component {
                             <Route path="/foodlist" render={() => 
                                 this.props.isLogged ?
                                 (<FoodList foodlist={this.props.foodlist}
-                                    isLogged={this.props.isLogged}
+                                    login={this.props.login}
                                     removeFromList={this.props.removeFromList}/>) :
                                     (<Redirect to="/"/>)
                             }/>

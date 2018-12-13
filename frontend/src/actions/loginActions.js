@@ -47,15 +47,15 @@ export const login = (user) => {
         //console.log(response);
         if(response.ok){
             response.json().then((data) => {
-            dispatch(loginSuccess());
+            dispatch(loginSuccess(user.username));            
             }).catch((error) => {
-            dispatch(loginFailed("server responded with error"));
+            dispatch(loginFailed("server responded with error "+error));
             })
         } else {
             dispatch(loginFailed("wrong credentials"));
         }
         }).catch((error) => {
-            dispatch(loginFailed("server responded with error"));
+            dispatch(loginFailed("server responded with error "+error));
         })
     }
     
@@ -101,9 +101,10 @@ const registerFailed = (error) => {
     }
 }
 
-const loginSuccess = () => {
+const loginSuccess = (username) => {
     return {
-        type:LOGIN_SUCCESS
+        type:LOGIN_SUCCESS,
+        username:username
     }
 }
 
