@@ -1,0 +1,91 @@
+import {
+    GET_DAILYLIST_SUCCESS,
+    GET_DAILYLIST_FAILED,
+    ADD_TO_DAILYLIST_SUCCESS,
+    ADD_TO_DAILYLIST_FAILED,
+    DELETE_FROM_DAILYLIST_SUCCESS,
+    DELETE_FROM_DAILYLIST_FAILED,
+    DAILYLIST_LOADING} from '../actions/dailyActions';
+
+    function getInitialState() {
+        let dailylist = []
+        if(sessionStorage.getItem("dailylist")) {
+            dailylist = sessionStorage.getItem("dailylist");
+        }
+        let error = ""
+        if(sessionStorage.getItem("dailylist_error")) {
+            error = sessionStorage.getItem("dailylist_error");
+        }
+        return {
+            dailylist:dailylist,
+            error:error,
+            loading:false
+        }
+    }
+    
+    function saveToStorage(dailylist,error) {
+        sessionStorage.setItem("daily_error",error);
+    }
+    
+    let initialState = getInitialState();
+    
+    export const dailyReducer = (state = initialState, action) => {
+        console.log("dailyReducer - action:"+action.type)
+        let tempState = {};
+        switch(action.type) {
+            case GET_DAILYLIST_SUCCESS:
+                tempState = {
+                    dailylist:action.dailylist,
+                    error:"",
+                    loading:false
+                }
+                saveToStorage(action.dailylist,"");
+                return tempState;
+            case GET_DAILYLIST_FAILED:
+                tempState = {
+                    ...state,
+                    error:action.error,
+                    loading:false
+                }
+                saveToStorage(state.dailylist,action.error);
+                return tempState;
+            case ADD_TO_DAILYLIST_SUCCESS:
+                tempState = {
+                    ...state,
+                    error:""
+                }
+                saveToStorage(state.dailylist,"");
+                return tempState;
+            case ADD_TO_DAILYLIST_FAILED:
+                tempState = {
+                    ...state,
+                    loading:false,
+                    error:action.error
+                }
+                saveToStorage(state.dailylist,action.error);
+                return tempState;
+            case DELETE_FROM_DAILYLIST_SUCCESS:
+                tempState = {
+                    ...state,
+                    error:""
+                }
+                saveToStorage(state.dailylist,"");
+                return tempState;
+            case DELETE_FROM_DAILYLIST_FAILED:
+                tempState = {
+                    ...state,
+                    error:action.error,
+                    loading:false
+                }
+                saveToStorage(state.dailylist,action.error);
+                return tempState;
+            case DAILYLIST_LOADING:
+                tempState = {
+                    ...state,
+                    loading:true
+                }
+                return tempState;
+            default:
+            return state;
+        }
+    }

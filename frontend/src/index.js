@@ -11,10 +11,12 @@ import LoginReducer from './reducers/loginReducer';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import { foodReducer } from './reducers/foodReducer';
+import { dailyReducer } from './reducers/dailyReducer';
 
 let rootReducer = combineReducers({
     login:LoginReducer,
-    food:foodReducer
+    food:foodReducer,
+    daily:dailyReducer
 })
 
 const store = createStore(rootReducer,applyMiddleware(thunk));

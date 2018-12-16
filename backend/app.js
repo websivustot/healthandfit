@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const foodrouter = require("./routes/foodrouter");
+const foodrouter = require("./routes/dailyrouter");
 const mongoose = require("mongoose");
 const userModel = require("./models/user");
 const bcrypt = require("bcrypt-nodejs");

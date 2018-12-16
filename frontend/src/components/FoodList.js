@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getList,removeFromList} from '../actions/foodActions';
 import {
-    Button, Table
+    Table, //Button, 
   } from 'reactstrap';
 
 
@@ -24,26 +24,31 @@ class FoodList extends React.Component {
         //console.log(event.target.name)
         this.props.dispatch(removeFromList(event.target.name));
     }
+
+    check = (event) => {
+        console.log(event.target.parentNode.getAttribute('name'))
+    }
     
 
     render(){
         console.log("foodlist",this.props)
       let items = this.props.foodlist.map((item) => {
-            return <tr key={item._id}>
+            return <tr key={item._id} name={item._id} onClick={this.check}>
                 <td>{item.foodname}</td>
                 <td>{item.energy}</td>
                 <td>{item.carbohydrate}</td>
                 <td>{item.fat}</td>
                 <td>{item.proteine}</td>                                
-                <td><Button onClick={this.remove}
+                {/*<td><Button onClick={this.remove}
                             name={item._id}
-                >Remove</Button></td>
+      >Remove</Button></td>*/}
             </tr>
       }) 
       //let items = "123" 
       
       return (
           <Table>
+              <tbody>
               
                   <tr>
                       <th>Name</th>
@@ -53,9 +58,9 @@ class FoodList extends React.Component {
                       <th>Proteine</th>
                   </tr>
                   
-                  <tbody>
+                  
                       {items}
-                  </tbody>
+                </tbody>
               
           </Table>
       )

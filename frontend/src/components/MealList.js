@@ -22,6 +22,10 @@ class MealList extends React.Component {
         });
     }
 
+    addMeal = () => {
+        console.log("addmeal")
+    }
+
     render(){
         const list = this.props.list;
         //console.log(list)
@@ -30,7 +34,7 @@ class MealList extends React.Component {
                 <Row>
                 <Col xs="3"><NavLink onClick={this.toggle}><GoDown/></NavLink></Col>
                 <Col xs="6" onClick={this.toggle}>{list.title}</Col>
-                <Col xs="3"><NavLink href="#"><Plus/></NavLink></Col>
+                <Col xs="3"><NavLink onClick={this.addMeal}><Plus/></NavLink></Col>
             </Row>
             <Collapse isOpen={this.state.isOpen}>
             <Table size="sm">
