@@ -6,8 +6,16 @@ import GoLeft from './GoLeft';
 import GoRight from './GoRight';
 import MealList from './MealList';
 import list from '../list';
+import {getList} from '../actions/dailyActions';
 
 class DailyList extends React.Component {
+
+    componentDidMount(){
+        if(this.props.isLogged){
+            console.log("dailylist")
+            this.props.dispatch(getList());
+        }
+    }
     
     render(){
         return(

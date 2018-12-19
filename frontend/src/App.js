@@ -5,8 +5,9 @@ import Navigation from './components/Navigation';
 import {connect} from 'react-redux';
 
 class App extends Component {
-
-  render() {             
+  
+  render() {   
+    console.log("app-props",this.props)          
     return (
       <div>
           <Navigation
@@ -14,7 +15,8 @@ class App extends Component {
             userName={this.props.userName}/>
           <Main 
             isLogged={this.props.isLogged} 
-            userName={this.props.userName}           
+            userName={this.props.userName} 
+            isFoodList={this.props.isFoodList}          
             />
       </div>
     );
@@ -25,7 +27,8 @@ const mapStateToProps = (state) => {
     console.log("app",state)
     return {
         isLogged:state.login.isLogged,
-        userName:state.login.userName
+        userName:state.login.userName,
+        isFoodList:state.daily.isFoodList
     }
   }
 

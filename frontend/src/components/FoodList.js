@@ -4,6 +4,7 @@ import {getList,removeFromList} from '../actions/foodActions';
 import {
     Table, //Button, 
   } from 'reactstrap';
+import { hideFoodList } from '../actions/dailyActions';
 
 
 class FoodList extends React.Component {
@@ -27,6 +28,7 @@ class FoodList extends React.Component {
 
     check = (event) => {
         console.log(event.target.parentNode.getAttribute('name'))
+        this.props.dispatch(hideFoodList());
     }
     
 
@@ -47,13 +49,13 @@ class FoodList extends React.Component {
       //let items = "123" 
       
       return (
-          <Table>
+          <Table size="sm">
               <tbody>
               
                   <tr>
                       <th>Name</th>
                       <th>Energy</th>
-                      <th>Carbohydrate</th>
+                      <th>Carboh.</th>
                       <th>Fat</th>
                       <th>Proteine</th>
                   </tr>

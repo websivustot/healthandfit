@@ -5,6 +5,8 @@ import {
   import GoDown from './GoDown';  
   import Plus from './Plus';
   import MealItem from './MealItem';
+  import {connect} from 'react-redux';
+  import {showFoodList} from '../actions/dailyActions';
 
 class MealList extends React.Component {
 
@@ -24,6 +26,7 @@ class MealList extends React.Component {
 
     addMeal = () => {
         console.log("addmeal")
+        this.props.dispatch(showFoodList());
     }
 
     render(){
@@ -50,4 +53,11 @@ class MealList extends React.Component {
     }
 }
 
-export default MealList;
+const mapStateToProps = (state) => {
+    return {
+        isLogged:state.login.isLogged,
+        foodlist:state.food.foodlist
+    }
+}
+
+export default connect(mapStateToProps)(MealList);

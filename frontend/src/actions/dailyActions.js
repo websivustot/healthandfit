@@ -5,6 +5,8 @@ export const ADD_TO_DAILYLIST_FAILED = "ADD_TO_DAILYLIST_FAILED";
 export const DELETE_FROM_DAILYLIST_SUCCESS = "DELETE_FROM_DAILYLIST_SUCCESS";
 export const DELETE_FROM_DAILYLIST_FAILED = "DELETE_FROM_DAILYLIST_FAILED";
 export const DAILYLIST_LOADING = "DAILYLIST_LOADING";
+export const SHOWFOODLIST = "SHOWFOODLIST";
+export const HIDEFOODLIST = "HIDEFOODLIST";
 
 //actions
 export const getList = () => {
@@ -128,5 +130,17 @@ const deleteFromDailyListFailed = (error) => {
 const dailyListLoading = () => {
     return {
         type:DAILYLIST_LOADING        
+    }
+}
+
+export const showFoodList = () => {    
+    return {
+        type:SHOWFOODLIST        
+    }
+}
+
+export const hideFoodList = () => {    
+    return {
+        type:HIDEFOODLIST        
     }
 }

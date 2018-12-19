@@ -5,7 +5,9 @@ import {
     ADD_TO_DAILYLIST_FAILED,
     DELETE_FROM_DAILYLIST_SUCCESS,
     DELETE_FROM_DAILYLIST_FAILED,
-    DAILYLIST_LOADING} from '../actions/dailyActions';
+    DAILYLIST_LOADING,
+    SHOWFOODLIST,
+    HIDEFOODLIST} from '../actions/dailyActions';
 
     function getInitialState() {
         let dailylist = []
@@ -16,15 +18,22 @@ import {
         if(sessionStorage.getItem("dailylist_error")) {
             error = sessionStorage.getItem("dailylist_error");
         }
+        let isFoodList = false
+        if(sessionStorage.getItem("isFoodList")) {
+            isFoodList = sessionStorage.getItem("isFoodList");
+        }
         return {
             dailylist:dailylist,
             error:error,
-            loading:false
+            loading:false,
+            isFoodList:isFoodList
         }
     }
     
-    function saveToStorage(dailylist,error) {
-        sessionStorage.setItem("daily_error",error);
+    function saveToStorage(dailylist,error,isFoodList) {
+        sessionStorage.setItem("dailylist",dailylist);
+        sessionStorage.setItem("daily_error",error); 
+        sessionStorage.setItem("isFoodList",isFoodList);         
     }
     
     let initialState = getInitialState();
@@ -85,6 +94,25 @@ import {
                     loading:true
                 }
                 return tempState;
+            case SHOWFOODLIST:
+            tempState = {
+                ...state,
+                error:action.error,
+                loading:false,
+                isFoodList:true
+            }
+            saveToStorage(state.dailylist,action.error,state.isFoodList);
+            return tempState;
+            case HIDEFOODLIST:
+            tempState = {
+                ...state,
+                error:action.error,
+                loading:false,
+                isFoodList:false
+            }
+            saveToStorage(state.dailylist,action.error,state.isFoodList);
+            return tempState;
+            
             default:
             return state;
         }
