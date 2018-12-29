@@ -30,7 +30,7 @@ import {
     let initialState = getInitialState();
     
     export const foodReducer = (state = initialState, action) => {
-        console.log("foodReducer - action:"+action.type)
+        //console.log("foodReducer - action:"+action.type)
         let tempState = {};
         switch(action.type) {
             case GET_FOODLIST_SUCCESS:

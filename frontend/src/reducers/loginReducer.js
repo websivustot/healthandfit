@@ -51,7 +51,7 @@ let initialState = getInitialState();
 //console.log(initialState);
 
 const loginReducer = (state = initialState,action) => {
-    console.log("loginReducer, action:",action);
+    //console.log("loginReducer, action:",action);
     let tempState = {};
     switch(action.type){
         case LOGIN_LOADING:

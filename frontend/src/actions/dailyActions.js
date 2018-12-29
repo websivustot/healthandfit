@@ -21,11 +21,9 @@ export const getList = () => {
     }
     dispatch(dailyListLoading());
     fetch("/api/daily", getObject).then((response) => {
-      //console.log("getlist response",response.json());
-        if(response.ok) {
-            console.log("++++",response)
-          response.json().then((data) => {
-              
+      //console.log("getdailylist response",response.json());
+        if(response.ok) {            
+          response.json().then((data) => {              
            dispatch(getDailyListSuccess(data));                   
             }).catch((error) => {
               dispatch(getDailyListFailed("problem loading food list")); 
@@ -86,8 +84,7 @@ export const removeFromList = (id) => {
 }
 //action creators
 
-const getDailyListSuccess = (dailylist) => {
-    console.log("getlistsuccess",dailylist)    
+const getDailyListSuccess = (dailylist) => {        
     return {
         type:GET_DAILYLIST_SUCCESS,
         dailylist:dailylist        

@@ -9,7 +9,7 @@ export const LOGIN_LOADING = "LOGIN_LOADING";
 //Actions
 
 export const register = (user) => {
-    console.log("USER: "+user.username+user.activity+user.needs);
+    //console.log("USER: "+user.username+user.activity+user.needs);
     return dispatch => {
         let registerObject = {
             method:"POST",

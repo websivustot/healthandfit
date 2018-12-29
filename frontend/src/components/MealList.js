@@ -29,22 +29,31 @@ class MealList extends React.Component {
         this.props.dispatch(showFoodList());
     }
 
-    render(){
-        const list = this.props.list;
-        //console.log(list)
+    render(){  
+        let list = this.props.list
+        console.log("list",list)      
+        let items = list.map( function(item) {
+            return <tr key={item._id}>
+                      <td className="text-left">{item.foodname}, {item.weight} g</td>
+                      <td className="text-right">{item.energy}  kcal</td>                         
+                
+            </tr>
+      }) 
             return(
                 <>
                 <Row>
                 <Col xs="3"><NavLink onClick={this.toggle}><GoDown/></NavLink></Col>
-                <Col xs="6" onClick={this.toggle}>{list.title}</Col>
+                <Col xs="6" onClick={this.toggle}>Dish</Col>
                 <Col xs="3"><NavLink onClick={this.addMeal}><Plus/></NavLink></Col>
             </Row>
             <Collapse isOpen={this.state.isOpen}>
             <Table size="sm">
                 <tbody>
-                    <MealItem item={list.meals[0]}/>
+                    {items}
+                   
+                    {/*<MealItem item={list.meals[0]}/>
                     <MealItem item={list.meals[1]}/>
-                    <MealItem item={list.meals[2]}/>                    
+            <MealItem item={list.meals[2]}/>     */}               
                 </tbody>
             </Table>
             </Collapse>

@@ -26,7 +26,7 @@ class Main extends React.Component {
                         <Switch>
                             <Route exact path="/" render={() => 
                                 this.props.isLogged ?
-                                (<DailyList userName={this.props.userName}/>) :
+                                (this.props.isFoodList ? <FoodList /> : <DailyList/>) :
                                 (<Welcome/>)
                             }/>
 

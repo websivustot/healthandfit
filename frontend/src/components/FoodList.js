@@ -2,21 +2,23 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getList,removeFromList} from '../actions/foodActions';
 import {
-    Table, //Button, 
+    Table, 
   } from 'reactstrap';
 import { hideFoodList } from '../actions/dailyActions';
+import FoodModal from './FoodModal';
 
 
 class FoodList extends React.Component {
 
     constructor(props){
-        super(props)
-        console.log("constructor",props)        
+        super(props)        
+        this.state = {
+            modal: false
+        };        
     }
 
     componentDidMount(){
-        if(this.props.isLogged){
-            console.log("logged")
+        if(this.props.isLogged){            
             this.props.dispatch(getList());
         }
     }
@@ -24,18 +26,25 @@ class FoodList extends React.Component {
     remove = (event) => {
         //console.log(event.target.name)
         this.props.dispatch(removeFromList(event.target.name));
-    }
+    }    
 
     check = (event) => {
-        console.log(event.target.parentNode.getAttribute('name'))
-        this.props.dispatch(hideFoodList());
+        //console.log(event.target.parentNode.getAttribute('name'),event.target.parentNode.getAttribute('index'))
+        
+        
+        this.setState({
+            modal: true,
+            indexModal: event.target.parentNode.getAttribute('index'),
+            foodId: event.target.parentNode.getAttribute('name')
+        })  
+        
     }
     
 
     render(){
-        console.log("foodlist",this.props)
-      let items = this.props.foodlist.map((item) => {
-            return <tr key={item._id} name={item._id} onClick={this.check}>
+        //console.log("foodlist",this.props,"foodlistmodal",this.state.modal)
+      let items = this.props.foodlist.map((item,index) => {
+            return <tr key={item._id} name={item._id} index={index} onClick={this.check} foodname={item.foodname}>
                 <td>{item.foodname}</td>
                 <td>{item.energy}</td>
                 <td>{item.carbohydrate}</td>
@@ -49,6 +58,13 @@ class FoodList extends React.Component {
       //let items = "123" 
       
       return (
+          <>
+          <FoodModal foodModalShow={this.state.modal} 
+                        foodlist={this.props.foodlist} 
+                        index={this.state.indexModal} 
+                        foodId={this.state.foodId}
+                        foodName={this.props.foodname}
+                        />
           <Table size="sm">
               <tbody>
               
@@ -65,6 +81,7 @@ class FoodList extends React.Component {
                 </tbody>
               
           </Table>
+          </>
       )
     }
 

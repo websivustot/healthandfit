@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 class App extends Component {
   
   render() {   
-    console.log("app-props",this.props)          
+    //console.log("app-props",this.props)          
     return (
       <div>
           <Navigation
@@ -24,7 +24,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("app",state)
+    //console.log("app",state)
     return {
         isLogged:state.login.isLogged,
         userName:state.login.userName,

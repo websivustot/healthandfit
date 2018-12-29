@@ -40,7 +40,7 @@ class Navigation extends Component {
     }
 
   render() {               
-    console.log("navigation",this.props);
+    //console.log("navigation",this.props);
     return (      
           <Navbar color="dark" dark expand="md">
               <NavbarBrand href="/">HEALTH & FIT</NavbarBrand>

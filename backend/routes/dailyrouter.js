@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const foodItem = require("../models/dailyitem");
+const dailyItem = require("../models/dailyitem");
 
 let router = express.Router();
 
@@ -22,7 +22,12 @@ router.post("/daily", function(req,res){
         foodid:req.body.foodid,    
         weight:req.body.weight,        
         date: req.body.date,
-        user:req.body.user
+        user:req.body.user,        
+        foodname:req.body.foodname,
+        energy:req.body.energy,
+        carbo:req.body.carbo,
+        fat:req.body.fat,
+        proteine:req.body.proteine
     })
     item.save(function(err){
         if (err){

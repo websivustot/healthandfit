@@ -4,7 +4,12 @@ let Schema = mongoose.Schema({
     foodid:String,    
     weight:Number,       
     date: { type: Date, default: Date.now },
-    user:String
+    user:String,
+    foodname:String,
+    energy:Number,
+    carbo:Number,
+    fat:Number,
+    proteine:Number
 
 })
 

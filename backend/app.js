@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const foodrouter = require("./routes/foodrouter");
-const foodrouter = require("./routes/dailyrouter");
+const dailyrouter = require("./routes/dailyrouter");
 const mongoose = require("mongoose");
 const userModel = require("./models/user");
 const bcrypt = require("bcrypt-nodejs");
@@ -154,6 +154,8 @@ function createToken(){
 }
 
 app.use("/api", isUserLogged, foodrouter);
+
+app.use("/api", isUserLogged, dailyrouter);
 
 //app.listen(3001 || process.env.PORT)
 app.listen(3001);

@@ -7,17 +7,18 @@ import GoRight from './GoRight';
 import MealList from './MealList';
 import list from '../list';
 import {getList} from '../actions/dailyActions';
+import {connect} from 'react-redux';
 
 class DailyList extends React.Component {
 
     componentDidMount(){
-        if(this.props.isLogged){
-            console.log("dailylist")
+        if(this.props.isLogged){            
             this.props.dispatch(getList());
         }
     }
     
     render(){
+        console.log("dailylist",this.props)
         return(
             <Container>
             <Row className="mb-4">
@@ -25,12 +26,7 @@ class DailyList extends React.Component {
                 <Col xs="6"><h1>Today</h1></Col>
                 <Col xs="3"><NavLink disabled href="#"><GoRight/></NavLink></Col>
             </Row>
-            
-            <MealList list={list[0]} />
-            <MealList list={list[1]} />
-            <MealList list={list[2]} />
-            <MealList list={list[3]} />
-            <MealList list={list[4]} />
+            <MealList list={this.props.dailylist} />          
             
             </Container>             
                     
@@ -38,4 +34,12 @@ class DailyList extends React.Component {
     }
 }
 
-export default DailyList;
+const mapStateToProps = (state) => {
+    //console.log("daililist",state)
+    return {
+        isLogged:state.login.isLogged,
+        dailylist:state.daily.dailylist
+    }
+}
+
+export default connect(mapStateToProps)(DailyList);

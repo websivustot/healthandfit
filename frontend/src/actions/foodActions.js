@@ -21,7 +21,7 @@ export const getList = () => {
     fetch("/api/food", getObject).then((response) => {
       //console.log("getlist response",response.json());
         if(response.ok) {
-            console.log("++++",response)
+            //console.log("++++",response)
           response.json().then((data) => {
               
            dispatch(getFoodListSuccess(data));                   
@@ -85,7 +85,7 @@ export const removeFromList = (id) => {
 //action creators
 
 const getFoodListSuccess = (foodlist) => {
-    console.log("getlistsuccess",foodlist)    
+    //console.log("getlistsuccess",foodlist)    
     return {
         type:GET_FOODLIST_SUCCESS,
         foodlist:foodlist        
