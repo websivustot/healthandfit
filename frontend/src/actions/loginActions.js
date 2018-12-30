@@ -46,8 +46,10 @@ export const login = (user) => {
         fetch("/login",loginObject).then((response) => {        
         if(response.ok){            
             response.json().then((data) => {  
-                sessionStorage.setItem("userName",data.username);                            
-                dispatch(loginSuccess());            
+                sessionStorage.setItem("userName",data.username);
+                sessionStorage.setItem("userNeeds",data.needs);  
+                console.log("loginaction-data",data)                          
+                dispatch(loginSuccess(data.username,data.needs));            
             }).catch((error) => {
             dispatch(loginFailed("server responded with error "+error));
             })
@@ -101,10 +103,11 @@ const registerFailed = (error) => {
     }
 }
 
-const loginSuccess = (username) => {
+const loginSuccess = (username,needs) => {
     return {
         type:LOGIN_SUCCESS,
-        username:username
+        username:username,
+        needs:needs
     }
 }
 

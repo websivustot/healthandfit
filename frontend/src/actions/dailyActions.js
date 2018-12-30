@@ -9,7 +9,7 @@ export const SHOWFOODLIST = "SHOWFOODLIST";
 export const HIDEFOODLIST = "HIDEFOODLIST";
 
 //actions
-export const getList = () => {
+export const getList = (username) => {
     
     return dispatch => {
     
@@ -19,8 +19,9 @@ export const getList = () => {
       credentialls:"include",
       headers: {"Content-Type":"application/json"}
     }
+    console.log("username",username)
     dispatch(dailyListLoading());
-    fetch("/api/daily", getObject).then((response) => {
+    fetch("/api/daily/"+username, getObject).then((response) => {
       //console.log("getdailylist response",response.json());
         if(response.ok) {            
           response.json().then((data) => {              

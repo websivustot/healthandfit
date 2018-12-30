@@ -76,7 +76,7 @@ passport.use("local-login", new localStrategy({
         if(isPasswordValid(password,user.password)){
             let token = createToken();
             req.session.token = token;
-            req.session.username = username;
+            req.session.username = username;            
             return done(null,user);
         }
     });
@@ -92,7 +92,8 @@ function isPasswordValid(pw,hash) {
 
 app.post("/login", 
 passport.authenticate("local-login",{failureRedirect:"/"}), function(req,res){
-        return res.status(200).json({"token":req.session.token,"username":req.session.username})   
+        //console.log("login-res",res.req.user)
+        return res.status(200).json({"token":req.session.token,"username":req.session.username,"needs":res.req.user.needs})   
 });
 
 app.post("/logout", function(req,res){

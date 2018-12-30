@@ -17,6 +17,20 @@ router.get("/daily", function(req,res){
     
 })
 
+router.get("/daily/:username", function(req,res){
+    console.log("usernameapi",req.params.username)
+    dailyItem.find({"user":req.params.username},function(err,items){
+        if(err){
+            res.status(404).json({"message":"dailylist not found"})
+        }
+        if(!items){
+            res.status(404).json({"message":"dailylist not found"})
+        }
+        return res.status(200).json(items);
+    })
+    
+})
+
 router.post("/daily", function(req,res){
     let item = new dailyItem({        
         foodid:req.body.foodid,    

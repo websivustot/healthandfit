@@ -3,8 +3,7 @@ import {
     Row, Col, NavLink, Table, Collapse
   } from 'reactstrap';
   import GoDown from './GoDown';  
-  import Plus from './Plus';
-  import MealItem from './MealItem';
+  import Plus from './Plus';  
   import {connect} from 'react-redux';
   import {showFoodList} from '../actions/dailyActions';
 
@@ -14,9 +13,9 @@ class MealList extends React.Component {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.state =          
-           { isOpen: false }        
+           { isOpen: false }            
         
-    }
+    }   
 
     toggle() {
         this.setState({
@@ -27,18 +26,18 @@ class MealList extends React.Component {
     addMeal = () => {
         console.log("addmeal")
         this.props.dispatch(showFoodList());
-    }
+    }    
 
-    render(){  
-        let list = this.props.list
-        console.log("list",list)      
-        let items = list.map( function(item) {
+    render(){          
+        let list = this.props.list                   
+        let items = list.map( function(item) {            
             return <tr key={item._id}>
                       <td className="text-left">{item.foodname}, {item.weight} g</td>
                       <td className="text-right">{item.energy}  kcal</td>                         
                 
             </tr>
-      }) 
+            }) 
+            
             return(
                 <>
                 <Row>
@@ -49,11 +48,7 @@ class MealList extends React.Component {
             <Collapse isOpen={this.state.isOpen}>
             <Table size="sm">
                 <tbody>
-                    {items}
-                   
-                    {/*<MealItem item={list.meals[0]}/>
-                    <MealItem item={list.meals[1]}/>
-            <MealItem item={list.meals[2]}/>     */}               
+                    {items}                                  
                 </tbody>
             </Table>
             </Collapse>
@@ -63,9 +58,11 @@ class MealList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log("meallist",state)
     return {
         isLogged:state.login.isLogged,
-        foodlist:state.food.foodlist
+        foodlist:state.food.foodlist,
+        summa:state.summa
     }
 }
 

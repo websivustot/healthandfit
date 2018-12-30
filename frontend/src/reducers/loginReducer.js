@@ -80,7 +80,8 @@ const loginReducer = (state = initialState,action) => {
                 isLogged:true,                
                 error:"",
                 loading:false,
-                userName:sessionStorage.getItem("userName")
+                userName:sessionStorage.getItem("userName"),
+                needs:sessionStorage.getItem("userNeeds")
                 
             }
             saveToStorage("true","",tempState.userName);
