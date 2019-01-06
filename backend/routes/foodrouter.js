@@ -23,12 +23,14 @@ router.post("/food", function(req,res){
         energy:req.body.energy,
         carbohydrate:req.body.carbohydrate,
         fat:req.body.fat,
-        protein:req.body.protein,
-        date: req.body.date,
-        user_id:req.body.user_id
+        proteine:req.body.proteine,
+        date:req.body.date,
+        user:req.body.user
     })
+    console.log("foodrouter",item)
     item.save(function(err){
         if (err){
+            console.log("saveerror",err)
             return res.status(409).json({"message":"item not saved"})
         }
         return res.status(200).json({"message":"success"});

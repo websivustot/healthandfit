@@ -15,9 +15,11 @@ function getInitialState(){
         if(sessionStorage.getItem("isLogged")){
             let tempIsLogged = false
             let tempUserName = "";
+            let tempNeeds = "";
             if(sessionStorage.getItem("isLogged") === "true"){
                 tempIsLogged = true;
                 tempUserName = sessionStorage.getItem("userName");
+                tempNeeds = sessionStorage.getItem("needs");
             }
             
             if(sessionStorage.getItem("login_error")){
@@ -27,7 +29,8 @@ function getInitialState(){
                 isLogged:tempIsLogged,
                 loading:false,
                 error:sessionStorage.getItem("login_error"),
-                userName:tempUserName
+                userName:tempUserName,
+                needs:tempNeeds
             }
         }
     } else {
@@ -35,15 +38,17 @@ function getInitialState(){
             isLogged:false,
             loading:false,
             error:error,
-            userName:""
+            userName:"",
+            needs:""
         }
     }
 }
 
-function saveToStorage(isLogged, error, userName){
+function saveToStorage(isLogged, error, userName, needs){
     sessionStorage.setItem("isLogged",isLogged);
     sessionStorage.setItem("error",error);
     sessionStorage.setItem("userName",userName);
+    sessionStorage.setItem("needs",needs);
 }
 
 let initialState = getInitialState();
@@ -81,7 +86,7 @@ const loginReducer = (state = initialState,action) => {
                 error:"",
                 loading:false,
                 userName:sessionStorage.getItem("userName"),
-                needs:sessionStorage.getItem("userNeeds")
+                needs:sessionStorage.getItem("needs")
                 
             }
             saveToStorage("true","",tempState.userName);

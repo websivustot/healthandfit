@@ -8,19 +8,24 @@ import {
 import {connect} from 'react-redux';
 import {addToList} from '../actions/foodActions';
 
-
 class FoodForm extends React.Component {
 
     constructor(props){
         super(props);
+        console.log("formfood",props.login.userName)
         this.state = {
             foodname:"",
             energy:0,
             carbohydrate:0,
             fat:0,
-            protein:0            
+            proteine:0,
+            user:props.login.userName            
         }
     }
+
+    handlePageChange() {
+        window.location = "/list";
+      }
 
     submit = (event) => {
         event.preventDefault();
@@ -30,10 +35,12 @@ class FoodForm extends React.Component {
             "energy":this.state.energy,
             "carbohydrate":this.state.carbohydrate,
             "fat":this.state.fat,
-            "protein":this.state.protein
+            "proteine":this.state.proteine,
+            "user":this.state.user
         }
         //console.log(this.props);
         this.props.dispatch(addToList(item));
+        this.handlePageChange();
     }
 
     onChange = (event) => {
@@ -44,7 +51,7 @@ class FoodForm extends React.Component {
     }
 
     render(){
-        //console.log(this.props);
+        console.log("foodform-render",this.props);
         return(
             <Form onSubmit={this.submit}>
             <FormGroup>
@@ -76,11 +83,11 @@ class FoodForm extends React.Component {
                         value={this.state.fat}/>
             </FormGroup>
             <FormGroup>
-            <Label htmlFor="protein">Protein</Label>
+            <Label htmlFor="proteine">Proteine</Label>
                 <Input type="text"
-                        name="protein"
+                        name="proteine"
                         onChange={this.onChange}
-                        value={this.state.protein}/>
+                        value={this.state.proteine}/>
             </FormGroup>
                 
                 
@@ -90,4 +97,11 @@ class FoodForm extends React.Component {
     }
 }
 
-export default connect()(FoodForm);
+const mapStateToProps = (state) => {
+    console.log("foodformstate",state)
+    return {        
+        login:state.login
+    }
+}
+
+export default connect(mapStateToProps)(FoodForm);

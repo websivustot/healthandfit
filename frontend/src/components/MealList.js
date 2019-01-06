@@ -29,7 +29,8 @@ class MealList extends React.Component {
     }    
 
     render(){          
-        let list = this.props.list                   
+        let list = this.props.list 
+        console.log("meallist",list) 
         let items = list.map( function(item) {            
             return <tr key={item._id}>
                       <td className="text-left">{item.foodname}, {item.weight} g</td>
@@ -42,7 +43,7 @@ class MealList extends React.Component {
                 <>
                 <Row>
                 <Col xs="3"><NavLink onClick={this.toggle}><GoDown/></NavLink></Col>
-                <Col xs="6" onClick={this.toggle}>Dish</Col>
+                <Col xs="6" onClick={this.toggle}>Dishes</Col>
                 <Col xs="3"><NavLink onClick={this.addMeal}><Plus/></NavLink></Col>
             </Row>
             <Collapse isOpen={this.state.isOpen}>

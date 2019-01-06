@@ -17,20 +17,22 @@ class DailyList extends React.Component {
             this.props.dispatch(getList(this.props.login.userName));
         }
         
-    }
+    }    
 
     getSumma = (list) => {
-        let summa = 0
+        let summa = 0        
+        console.log("list",list)
         list.map( function(item) {
             summa = summa + item.energy;                       
             }) 
+        
         return summa        
     }
     
     render(){
-                
+        console.log("dailylist-props",this.props.dailylist)
         let summa = this.getSumma(this.props.dailylist)
-        console.log("dailylist",this.props.dailylist,"summa",summa)
+        console.log("summa",summa)
         return(
             <Container>
             <Row className="mb-4">
@@ -48,11 +50,12 @@ class DailyList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("daililist",state)
+    console.log("daililist-state",state)
     return {
         isLogged:state.login.isLogged,
         dailylist:state.daily.dailylist,
         login:state.login
+        
     }
 }
 

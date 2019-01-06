@@ -57,7 +57,7 @@ import {connect} from 'react-redux';
           weight: 0,
           user: this.props.current.login.userName
         });
-        this.props.dispatch(hideFoodList());
+        this.props.dispatch(hideFoodList());        
         this.submit();
         this.toggle();
     }

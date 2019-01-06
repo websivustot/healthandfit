@@ -85,7 +85,8 @@ export const removeFromList = (id) => {
 }
 //action creators
 
-const getDailyListSuccess = (dailylist) => {        
+const getDailyListSuccess = (dailylist) => { 
+    //console.log("getdailylistsuccess",dailylist)       
     return {
         type:GET_DAILYLIST_SUCCESS,
         dailylist:dailylist        

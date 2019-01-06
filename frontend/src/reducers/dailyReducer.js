@@ -13,6 +13,7 @@ import {
         let dailylist = []
         if(sessionStorage.getItem("dailylist")) {
             dailylist = sessionStorage.getItem("dailylist");
+            dailylist = JSON.parse(dailylist)            
         }
         let error = ""
         if(sessionStorage.getItem("dailylist_error")) {
@@ -31,7 +32,7 @@ import {
     }
     
     function saveToStorage(dailylist,error,isFoodList) {
-        sessionStorage.setItem("dailylist",dailylist);
+        sessionStorage.setItem("dailylist",JSON.stringify(dailylist));
         sessionStorage.setItem("daily_error",error); 
         sessionStorage.setItem("isFoodList",isFoodList);         
     }
@@ -49,6 +50,7 @@ import {
                     loading:false
                 }
                 saveToStorage(action.dailylist,"");
+                console.log("getdailylist-rducer",tempState)
                 return tempState;
             case GET_DAILYLIST_FAILED:
                 tempState = {
@@ -63,6 +65,7 @@ import {
                     ...state,
                     error:""
                 }
+                console.log("tempstate-addtodailylist",tempState)
                 saveToStorage(state.dailylist,"");
                 return tempState;
             case ADD_TO_DAILYLIST_FAILED:
@@ -110,7 +113,8 @@ import {
                 loading:false,
                 isFoodList:false
             }
-            saveToStorage(state.dailylist,action.error,state.isFoodList);
+            console.log("hidefoodlist",state.dailylist)
+            saveToStorage(action.error,state.isFoodList);
             return tempState;
             
             default:

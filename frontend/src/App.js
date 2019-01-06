@@ -28,6 +28,7 @@ const mapStateToProps = (state) => {
     return {
         isLogged:state.login.isLogged,
         userName:state.login.userName,
+        needs:state.login.needs,
         isFoodList:state.daily.isFoodList
     }
   }

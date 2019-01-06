@@ -2,9 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getList,removeFromList} from '../actions/foodActions';
 import {
-    Table, 
+    Table, NavLink
   } from 'reactstrap';
 import FoodModal from './FoodModal';
+import Plus from './Plus';
 
 
 class FoodList extends React.Component {
@@ -41,7 +42,7 @@ class FoodList extends React.Component {
     
 
     render(){
-        //console.log("foodlist",this.props,"foodlistmodal",this.state.modal)
+        console.log("foodlist",this.props.foodlist)
       let items = this.props.foodlist.map((item,index) => {
             return <tr key={item._id} name={item._id} index={index} onClick={this.check} foodname={item.foodname}>
                 <td>{item.foodname}</td>
@@ -58,12 +59,13 @@ class FoodList extends React.Component {
       
       return (
           <>
+          <NavLink href="/foodform"><Plus/></NavLink>
           <FoodModal foodModalShow={this.state.modal} 
                         foodlist={this.props.foodlist} 
                         index={this.state.indexModal} 
                         foodId={this.state.foodId}
                         foodName={this.props.foodname}
-                        />
+                        />          
           <Table size="sm">
               <tbody>
               
@@ -90,6 +92,7 @@ const mapStateToProps = (state) => {
     return {
         isLogged:state.login.isLogged,
         foodlist:state.food.foodlist
+        
     }
 }
 

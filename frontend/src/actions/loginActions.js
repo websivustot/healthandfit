@@ -47,7 +47,7 @@ export const login = (user) => {
         if(response.ok){            
             response.json().then((data) => {  
                 sessionStorage.setItem("userName",data.username);
-                sessionStorage.setItem("userNeeds",data.needs);  
+                sessionStorage.setItem("needs",data.needs);  
                 console.log("loginaction-data",data)                          
                 dispatch(loginSuccess(data.username,data.needs));            
             }).catch((error) => {

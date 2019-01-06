@@ -48,12 +48,12 @@ export const addToList = (item) => {
       body:JSON.stringify(item)
     }
     fetch("/api/food", postObject).then((response) => {
-      //console.log("addtolist"+response);
+      //console.log("addtolist",response);
         if(response.ok) {
           dispatch(addToFoodListSuccess());
           dispatch(getList());          
         } else {
-          dispatch(addTotFoodListFailed("Response not OK. Status:"+response.status));
+          dispatch(addTotFoodListFailed("Response not OK. Status:",response.status));
         }
     }).catch((error) => {
         dispatch(addTotFoodListFailed("server responded with error"));
