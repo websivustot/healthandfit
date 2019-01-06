@@ -4,7 +4,6 @@ import {getList,removeFromList} from '../actions/foodActions';
 import {
     Table, 
   } from 'reactstrap';
-import { hideFoodList } from '../actions/dailyActions';
 import FoodModal from './FoodModal';
 
 

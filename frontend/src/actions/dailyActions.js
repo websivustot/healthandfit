@@ -19,7 +19,7 @@ export const getList = (username) => {
       credentialls:"include",
       headers: {"Content-Type":"application/json"}
     }
-    console.log("username",username)
+    console.log("daily-action-getList-username",username)
     dispatch(dailyListLoading());
     fetch("/api/daily/"+username, getObject).then((response) => {
       //console.log("getdailylist response",response.json());
@@ -39,7 +39,7 @@ export const getList = (username) => {
   }
 }
 
-export const addToList = (item) => {
+export const addToList = (item,username) => {
     return dispatch => {
     let postObject = {
       method: "POST",
@@ -52,7 +52,7 @@ export const addToList = (item) => {
       //console.log("addtolist"+response);
         if(response.ok) {
           dispatch(addToDailyListSuccess());
-          dispatch(getList());          
+          dispatch(getList(username));          
         } else {
           dispatch(addToDailyListFailed("Response not OK. Status:"+response.status));
         }

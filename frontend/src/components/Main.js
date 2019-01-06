@@ -15,8 +15,7 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
 class Main extends React.Component {
 
-    render(){
-        console.log("main",this.props.isFoodList)
+    render(){        
         return(
             <Jumbotron className="bg-white">
               <Container>

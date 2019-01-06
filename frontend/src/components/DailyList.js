@@ -5,16 +5,10 @@ import {
 import GoLeft from './GoLeft';
 import GoRight from './GoRight';
 import MealList from './MealList';
-import list from '../list';
 import {getList} from '../actions/dailyActions';
 import {connect} from 'react-redux';
 
-class DailyList extends React.Component {
-
-    constructor(props){
-        super(props)
-        //console.log("constructor",props.login.userName)
-    }
+class DailyList extends React.Component {    
     
     componentDidMount(){
         
@@ -34,8 +28,9 @@ class DailyList extends React.Component {
     }
     
     render(){
-        console.log("dailylist",this.props.dailylist.userName)        
+                
         let summa = this.getSumma(this.props.dailylist)
+        console.log("dailylist",this.props.dailylist,"summa",summa)
         return(
             <Container>
             <Row className="mb-4">

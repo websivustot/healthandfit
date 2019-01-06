@@ -44,7 +44,7 @@ import {connect} from 'react-redux';
             "fat":this.state.fat,
             "proteine":this.state.proteine
         }        
-        this.props.dispatch(addToList(item));        
+        this.props.dispatch(addToList(item,this.state.user));        
     }
 
     add = () => {
