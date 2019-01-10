@@ -8,8 +8,7 @@ export const LOGIN_LOADING = "LOGIN_LOADING";
 
 //Actions
 
-export const register = (user) => {
-    //console.log("USER: "+user.username+user.activity+user.needs);
+export const register = (user) => {    
     return dispatch => {
         let registerObject = {
             method:"POST",
@@ -47,8 +46,7 @@ export const login = (user) => {
         if(response.ok){            
             response.json().then((data) => {  
                 sessionStorage.setItem("userName",data.username);
-                sessionStorage.setItem("needs",data.needs);  
-                console.log("loginaction-data",data)                          
+                sessionStorage.setItem("needs",data.needs);                                         
                 dispatch(loginSuccess(data.username,data.needs));            
             }).catch((error) => {
             dispatch(loginFailed("server responded with error "+error));
@@ -73,8 +71,7 @@ export const logout = () => {
         headers:{"Content-Type":"application/json"}
     }
     dispatch(loadingLogin());
-    fetch("/logout", logoutObject).then((response) => {
-        console.log(response);
+    fetch("/logout", logoutObject).then((response) => {        
         if(response.ok){
         dispatch(logoutSuccess());
         }

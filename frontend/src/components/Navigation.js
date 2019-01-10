@@ -39,8 +39,8 @@ class Navigation extends Component {
         });
     }
 
-  render() {               
-    //console.log("navigation",this.props);
+  render() {              
+
     return (      
           <Navbar color="dark" dark expand="md">
               <NavbarBrand href="/">HEALTH & FIT</NavbarBrand>
@@ -67,8 +67,7 @@ class Navigation extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-    //console.log(state);
+const mapStateToProps = (state) => {    
     let loading = false;
     let error = "";
     if(state.login.loading || state.food.loading) {
@@ -84,7 +83,8 @@ const mapStateToProps = (state) => {
         isLogged:state.login.isLogged,
         loading:loading,
         loginError:error,
-        userName:state.login.userName
+        userName:state.login.userName,
+        needs:state.login.needs
     }
 }
 

@@ -47,8 +47,7 @@ import {connect} from 'react-redux';
         this.props.dispatch(addToList(item,this.state.user));        
     }
 
-    add = () => {
-        console.log(this.state)
+    add = () => {        
         this.setState({          
           energy: 0,
           carbo: 0,
@@ -81,13 +80,11 @@ import {connect} from 'react-redux';
             fat: food.fat * coef,
             proteine: food.proteine * coef,
             name: food.foodname
-        })
-        //console.log("fat",food)
+        })       
     }
     
       render() {
-        let {...food} = this.props.foodlist[this.props.index]
-        console.log("modalprops", this.props.current.login.userName)
+        let {...food} = this.props.foodlist[this.props.index]        
         
         return (
           <div>            

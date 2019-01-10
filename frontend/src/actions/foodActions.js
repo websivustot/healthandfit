@@ -18,13 +18,10 @@ export const getList = () => {
       headers: {"Content-Type":"application/json"}
     }
     dispatch(foodListLoading());
-    fetch("/api/food", getObject).then((response) => {
-      //console.log("getlist response",response.json());
-        if(response.ok) {
-            //console.log("++++",response)
+    fetch("/api/food", getObject).then((response) => {      
+        if(response.ok) {            
           response.json().then((data) => {
-              
-           dispatch(getFoodListSuccess(data));                   
+              dispatch(getFoodListSuccess(data));                   
             }).catch((error) => {
               dispatch(getFoodListFailed("problem loading food list")); 
             })
@@ -47,8 +44,7 @@ export const addToList = (item) => {
       headers: {"Content-Type":"application/json"},
       body:JSON.stringify(item)
     }
-    fetch("/api/food", postObject).then((response) => {
-      //console.log("addtolist",response);
+    fetch("/api/food", postObject).then((response) => {      
         if(response.ok) {
           dispatch(addToFoodListSuccess());
           dispatch(getList());          
@@ -84,8 +80,7 @@ export const removeFromList = (id) => {
 }
 //action creators
 
-const getFoodListSuccess = (foodlist) => {
-    //console.log("getlistsuccess",foodlist)    
+const getFoodListSuccess = (foodlist) => {       
     return {
         type:GET_FOODLIST_SUCCESS,
         foodlist:foodlist        

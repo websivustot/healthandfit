@@ -11,8 +11,7 @@ import {addToList} from '../actions/foodActions';
 class FoodForm extends React.Component {
 
     constructor(props){
-        super(props);
-        console.log("formfood",props.login.userName)
+        super(props);        
         this.state = {
             foodname:"",
             energy:0,
@@ -37,8 +36,7 @@ class FoodForm extends React.Component {
             "fat":this.state.fat,
             "proteine":this.state.proteine,
             "user":this.state.user
-        }
-        //console.log(this.props);
+        }        
         this.props.dispatch(addToList(item));
         this.handlePageChange();
     }
@@ -50,8 +48,7 @@ class FoodForm extends React.Component {
         this.setState(state);
     }
 
-    render(){
-        console.log("foodform-render",this.props);
+    render(){        
         return(
             <Form onSubmit={this.submit}>
             <FormGroup>
@@ -97,8 +94,7 @@ class FoodForm extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log("foodformstate",state)
+const mapStateToProps = (state) => {    
     return {        
         login:state.login
     }

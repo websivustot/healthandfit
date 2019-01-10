@@ -12,7 +12,8 @@ const mongoStore = require("connect-mongo")(session);
 
 let app = express();
 app.use(bodyParser.json());
-//user databases
+
+app.use(express.static(__dirname+"/static"));
 
 mongoose.connect("mongodb://localhost/healthandfitdatabase").then(
     () => {console.log("connection to Mongodb successful")},
@@ -91,8 +92,7 @@ function isPasswordValid(pw,hash) {
 }
 
 app.post("/login", 
-passport.authenticate("local-login",{failureRedirect:"/"}), function(req,res){
-        //console.log("login-res",res.req.user)
+passport.authenticate("local-login",{failureRedirect:"/"}), function(req,res){        
         return res.status(200).json({"token":req.session.token,"username":req.session.username,"needs":res.req.user.needs})   
 });
 
@@ -103,11 +103,7 @@ app.post("/logout", function(req,res){
     res.status(200).json({"message":"logged out"});
 })
 
-app.post("/register", function(req,res){
-
-    console.log("req.body"+req.body.username);
-    console.log("req.body"+req.body.height);
-    console.log("req.body.needs"+req.body.needs);
+app.post("/register", function(req,res){    
 
     if(!req.body.username || !req.body.password){
         return res.status(409).json({"message":"provide credentials"})
@@ -136,8 +132,7 @@ app.post("/register", function(req,res){
     
 });
 
-function isUserLogged(req,res,next){
-    //let token = req.headers.token;    
+function isUserLogged(req,res,next){        
     if(req.isAuthenticated()){
         return next();
     }
@@ -158,6 +153,6 @@ app.use("/api", isUserLogged, foodrouter);
 
 app.use("/api", isUserLogged, dailyrouter);
 
-//app.listen(3001 || process.env.PORT)
-app.listen(3001);
+const port = process.env.PORT || 3001
+app.listen(port)
 console.log("Running in port 3001");

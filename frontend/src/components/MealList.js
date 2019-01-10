@@ -23,14 +23,12 @@ class MealList extends React.Component {
         });
     }
 
-    addMeal = () => {
-        console.log("addmeal")
+    addMeal = () => {        
         this.props.dispatch(showFoodList());
     }    
 
     render(){          
-        let list = this.props.list 
-        console.log("meallist",list) 
+        let list = this.props.list        
         let items = list.map( function(item) {            
             return <tr key={item._id}>
                       <td className="text-left">{item.foodname}, {item.weight} g</td>
@@ -58,8 +56,7 @@ class MealList extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log("meallist",state)
+const mapStateToProps = (state) => {    
     return {
         isLogged:state.login.isLogged,
         foodlist:state.food.foodlist,

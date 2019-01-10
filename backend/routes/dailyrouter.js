@@ -17,8 +17,7 @@ router.get("/daily", function(req,res){
     
 })
 
-router.get("/daily/:username", function(req,res){
-    console.log("usernameapi",req.params.username)
+router.get("/daily/:username", function(req,res){    
     dailyItem.find({"user":req.params.username},function(err,items){
         if(err){
             res.status(404).json({"message":"dailylist not found"})

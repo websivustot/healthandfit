@@ -23,39 +23,28 @@ class FoodList extends React.Component {
         }
     }
 
-    remove = (event) => {
-        //console.log(event.target.name)
+    remove = (event) => {        
         this.props.dispatch(removeFromList(event.target.name));
     }    
 
-    check = (event) => {
-        //console.log(event.target.parentNode.getAttribute('name'),event.target.parentNode.getAttribute('index'))
-        
-        
+    check = (event) => {        
         this.setState({
             modal: true,
             indexModal: event.target.parentNode.getAttribute('index'),
             foodId: event.target.parentNode.getAttribute('name')
-        })  
-        
-    }
-    
+        })          
+    }    
 
-    render(){
-        console.log("foodlist",this.props.foodlist)
+    render(){        
       let items = this.props.foodlist.map((item,index) => {
             return <tr key={item._id} name={item._id} index={index} onClick={this.check} foodname={item.foodname}>
                 <td>{item.foodname}</td>
                 <td>{item.energy}</td>
                 <td>{item.carbohydrate}</td>
                 <td>{item.fat}</td>
-                <td>{item.proteine}</td>                                
-                {/*<td><Button onClick={this.remove}
-                            name={item._id}
-      >Remove</Button></td>*/}
+                <td>{item.proteine}</td>                
             </tr>
-      }) 
-      //let items = "123" 
+      })       
       
       return (
           <>
@@ -79,8 +68,7 @@ class FoodList extends React.Component {
                   
                   
                       {items}
-                </tbody>
-              
+                </tbody>              
           </Table>
           </>
       )
@@ -91,7 +79,8 @@ class FoodList extends React.Component {
 const mapStateToProps = (state) => {
     return {
         isLogged:state.login.isLogged,
-        foodlist:state.food.foodlist
+        foodlist:state.food.foodlist,
+        needs:state.login.needs
         
     }
 }

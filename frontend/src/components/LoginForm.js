@@ -12,8 +12,7 @@ class LoginForm extends React.Component {
 
     constructor(props){
         super(props);
-        let user = JSON.parse(sessionStorage.getItem("user"));
-        //console.log("user from storage: "+user.activity+user.needs);
+        let user = JSON.parse(sessionStorage.getItem("user"));        
         this.state = {
             username:"",
             password:"",
@@ -56,8 +55,7 @@ class LoginForm extends React.Component {
             "activity":this.state.activity,
             "needs":this.state.needs
         }
-        if(event.target.name === "register") {
-            console.log("loginform-register: "+user.username+user.activity)
+        if(event.target.name === "register") {            
             this.props.dispatch(register(user));
         } else {
             this.props.dispatch(login(user));

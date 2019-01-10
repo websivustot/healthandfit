@@ -24,14 +24,11 @@ class Calculator extends React.Component {
     onChange = (event) => {
         let state = {}
         state[event.target.name] = event.target.value;
-        this.setState(state);
-        console.log(state, this.state);
-        
+        this.setState(state);        
     }
 
     calculate = (user) => {
-
-        console.log(user);
+        
         this.setState({formIsOpened: false});
         //man  - BMR = [9.99 x weight (kg)] + [6.25 x height (sm)] - [4.92 x age (years)] + 5
         //woman - BMR = [9.99 x weight (kg)] + [6.25 x height (sm)] - [4.92 x age (years)] - 161
@@ -39,13 +36,11 @@ class Calculator extends React.Component {
 
         let result = user.gender ? bmr + 5 : bmr - 161;
         result = Math.round(result * user.activity);
-        this.setState({calculationResult: result});
-        console.log("RESULT: ",result,"STATE:",this.state); 
+        this.setState({calculationResult: result});         
         return result;               
     }
 
-    submit = (event) => {
-        //event.preventDefault();
+    submit = (event) => {        
         
         if (this.state.height.length === 0 || this.state.weight.length === 0 
             || this.state.age.length === 0 || this.state.gender.length === 0) {
@@ -64,15 +59,12 @@ class Calculator extends React.Component {
 
         }       
 
-        user.needs = this.calculate(user);
-        console.log("user",user)
+        user.needs = this.calculate(user);        
         
-        if(event.target.name === "register") {
-            //this.props.dispatch(register(user));
+        if(event.target.name === "register") {            
             sessionStorage.setItem("user",JSON.stringify(user));
-        } 
-        
-       //console.log(user);
+        }         
+       
     }
 
     render(){

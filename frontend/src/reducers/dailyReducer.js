@@ -39,8 +39,7 @@ import {
     
     let initialState = getInitialState();
     
-    export const dailyReducer = (state = initialState, action) => {
-        console.log("dailyReducer - action:"+action.type)
+    export const dailyReducer = (state = initialState, action) => {        
         let tempState = {};
         switch(action.type) {
             case GET_DAILYLIST_SUCCESS:
@@ -49,8 +48,7 @@ import {
                     error:"",
                     loading:false
                 }
-                saveToStorage(action.dailylist,"");
-                console.log("getdailylist-rducer",tempState)
+                saveToStorage(action.dailylist,"");                
                 return tempState;
             case GET_DAILYLIST_FAILED:
                 tempState = {
@@ -64,8 +62,7 @@ import {
                 tempState = {
                     ...state,
                     error:""
-                }
-                console.log("tempstate-addtodailylist",tempState)
+                }                
                 saveToStorage(state.dailylist,"");
                 return tempState;
             case ADD_TO_DAILYLIST_FAILED:
@@ -112,8 +109,7 @@ import {
                 error:action.error,
                 loading:false,
                 isFoodList:false
-            }
-            console.log("hidefoodlist",state.dailylist)
+            }            
             saveToStorage(action.error,state.isFoodList);
             return tempState;
             

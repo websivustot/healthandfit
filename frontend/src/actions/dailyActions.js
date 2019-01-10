@@ -18,11 +18,9 @@ export const getList = (username) => {
       mode: "cors",
       credentialls:"include",
       headers: {"Content-Type":"application/json"}
-    }
-    console.log("daily-action-getList-username",username)
+    }    
     dispatch(dailyListLoading());
-    fetch("/api/daily/"+username, getObject).then((response) => {
-      //console.log("getdailylist response",response.json());
+    fetch("/api/daily/"+username, getObject).then((response) => {      
         if(response.ok) {            
           response.json().then((data) => {              
            dispatch(getDailyListSuccess(data));                   
@@ -48,8 +46,7 @@ export const addToList = (item,username) => {
       headers: {"Content-Type":"application/json"},
       body:JSON.stringify(item)
     }
-    fetch("/api/daily", postObject).then((response) => {
-      //console.log("addtolist"+response);
+    fetch("/api/daily", postObject).then((response) => {      
         if(response.ok) {
           dispatch(addToDailyListSuccess());
           dispatch(getList(username));          
@@ -85,8 +82,7 @@ export const removeFromList = (id) => {
 }
 //action creators
 
-const getDailyListSuccess = (dailylist) => { 
-    //console.log("getdailylistsuccess",dailylist)       
+const getDailyListSuccess = (dailylist) => {        
     return {
         type:GET_DAILYLIST_SUCCESS,
         dailylist:dailylist        
