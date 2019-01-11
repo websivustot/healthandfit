@@ -1,8 +1,8 @@
-## Health & Fit {style="text-align:center"}
+# Health & Fit 
 
-![Be healthy and fit!](https://healthandfit.herokuapp.com/static/media/logo.cbbd1c2a.png) {style="text-align:center"}
+![Be healthy and fit!](https://healthandfit.herokuapp.com/static/media/logo.cbbd1c2a.png) 
 
-Be healthy and fit!
+## Be healthy and fit!
 
 Become healthier by controlling the energy value of the food you eat.
 
