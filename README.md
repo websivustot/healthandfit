@@ -1,6 +1,6 @@
--> ## Health & Fit <-
+## Health & Fit {style="text-align:center"}
 
--> ![Be healthy and fit!](https://healthandfit.herokuapp.com/static/media/logo.cbbd1c2a.png) <-
+![Be healthy and fit!](https://healthandfit.herokuapp.com/static/media/logo.cbbd1c2a.png) {style="text-align:center"}
 
 Be healthy and fit!
 
