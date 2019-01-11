@@ -1,5 +1,9 @@
-Be healthy and fit!
 Health & Fit
+
+![Be healthy and fit!](https://healthandfit.herokuapp.com/static/media/logo.cbbd1c2a.png)
+
+Be healthy and fit!
+
 Become healthier by controlling the energy value of the food you eat.
 
 We will calculate your daily energy needs based on your personal data of your gender, weight, height and age.
