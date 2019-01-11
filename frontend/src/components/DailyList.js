@@ -19,10 +19,11 @@ class DailyList extends React.Component {
     }    
 
     getSumma = (list) => {
-        let summa = 0                
-        list.map( function(item) {
-            summa = summa + item.energy;                       
-            }) 
+        let summa = 0        
+
+        list.forEach(function(item) {
+            summa += item.energy;
+        });        
         
         return summa        
     }
