@@ -8,7 +8,7 @@ Become healthier by controlling the energy value of the food you eat.
 
 We will calculate your daily energy needs based on your personal data of your gender, weight, height and age.
 
-This project's aim is to learn modern web-technologies such as JS, Node JS, React JS, Redux, MongoDB and related libraries. See the last version is in the "development" branch.
+This project's aim is to learn modern web-technologies such as JS, Node JS, React JS, Redux, MongoDB and related libraries. See the last version in the "development" branch.
 
 ### Try on Heroku: https://healthandfit.herokuapp.com/ 
 
