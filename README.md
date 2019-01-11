@@ -10,6 +10,8 @@ We will calculate your daily energy needs based on your personal data of your ge
 
 This project's aim is to learn modern web-technologies such as JS, Node JS, React JS, Redux, MongoDB and related libraries. See the last version is in the "development" branch.
 
+### Try on Heroku: https://healthandfit.herokuapp.com/ 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
