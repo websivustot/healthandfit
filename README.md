@@ -18,7 +18,46 @@ We calculate your daily energy needs based on your personal data of your gender,
 
 The user can save his daily list of food he eats and calculate the total number of calories he gets.
 
+The main functionality is implemented: 
+* user registration and logging
+* daily calorie needs calculating and saving them
+* creating of daily food list for user by general food list 
+* adding foods to the general list of foods
+* daily calorie counting
+
+Can be implemented in a future:
+* user dashboard for editing user parameters
+* more convinient search for general food list, categories of foods
+* sorting of daily list by date and time (by breakfast, lunch ... etc)
+* increase the general food list to 4000 items
+
+Can be implemented in more distant future:
+* accounting of physical activity of users (calorie burning)
+* creating social network elements such as messaging and creating interest groups
+* geospatial services
+
+### The technical features of implementation
+
 This project's aim is to learn modern web-technologies such as JS, Node JS, React JS, Redux, MongoDB and related libraries. See the last version in the "development" branch.
+
+The following libraries and tools were used in the project:
+
+* Visual Studio Code IDE
+* Node JS v8.11.4
+* React JS / Redux
+* Fontawesome for React v1.6.1   
+* Reactstrap (Bootstrap for React) v6.5.0
+* Express library v4.16.4
+* MongoDB driver and libraries
+* Heroku cloud service
+* Atlas MongoDB cloud service
+* Git
+
+... and related programs and libraries.
+ 
+The following experimental features were used in the project:
+
+* Fetch API (do not work on Samsung Interner Browser, see compatibility https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API#Browser_compatibility)   
 
 ### Try on Heroku: https://healthandfit.herokuapp.com/ 
 
