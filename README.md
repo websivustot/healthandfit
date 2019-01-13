@@ -41,6 +41,8 @@ Can be implemented in more distant future:
 
 This project's aim is to learn modern web-technologies such as JS, Node JS, React JS, Redux, MongoDB and related libraries. See the last version in the "**development**" branch.
 
+Front-end is implemented on React JS with Redux pattern. Back-end is REST API which implemented on Node JS with Express middleware and MongoDB database.
+
 The following libraries and tools were used in the project:
 
 * Visual Studio Code IDE
