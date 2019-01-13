@@ -10,11 +10,11 @@ The main idea of application to become healthier by controlling the energy value
 We calculate your daily energy needs based on your personal data of your gender, weight, height and age.
 
 > #### DailyEnergyNeeds = weight * A + height * B + age * C  + D, where
-> A = 10
-> B = 6,25
-> C = 5
-> D = -161 for woman
-> D = 5 for men
+> * A = 10
+> * B = 6,25
+> * C = 5
+> * D = -161 for woman
+> * D = 5 for men
 
 The user can save his daily list of food he eats and calculate the total number of calories he gets.
 
