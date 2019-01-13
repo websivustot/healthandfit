@@ -57,7 +57,8 @@ The following libraries and tools were used in the project:
  
 The following experimental features were used in the project:
 
-* Fetch API (do not work on Samsung Interner Browser, see compatibility https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API#Browser_compatibility)   
+* Fetch API (do not work on Samsung Interner Browser, see compatibility https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API#Browser_compatibility)
+* Window.sessionStorage - https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage#Browser_compatibility
 
 ### Try on Heroku: https://healthandfit.herokuapp.com/ 
 
