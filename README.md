@@ -4,9 +4,19 @@
 
 ## Be healthy and fit!
 
-Become healthier by controlling the energy value of the food you eat.
+### Synopsis
 
-We will calculate your daily energy needs based on your personal data of your gender, weight, height and age.
+The main idea of application to become healthier by controlling the energy value of the food you eat.
+We calculate your daily energy needs based on your personal data of your gender, weight, height and age.
+
+> DailyEnergyNeeds = weight * A + height * B + age * C  + D, where
+> A = 10
+> B = 6,25
+> C = 5
+> D = -161 for woman
+> D = 5 for men
+
+The user can save his daily list of food he eats and calculate the total number of calories he gets.
 
 This project's aim is to learn modern web-technologies such as JS, Node JS, React JS, Redux, MongoDB and related libraries. See the last version in the "development" branch.
 
