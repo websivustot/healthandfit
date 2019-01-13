@@ -26,6 +26,7 @@ The main functionality is implemented:
 * daily calorie counting
 
 Can be implemented in a future:
+* input food data validation 
 * user dashboard for editing user parameters
 * more convinient search for general food list, categories of foods
 * sorting of daily list by date and time (by breakfast, lunch ... etc)
