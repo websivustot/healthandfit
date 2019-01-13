@@ -38,13 +38,13 @@ Can be implemented in more distant future:
 
 ### The technical features of implementation
 
-This project's aim is to learn modern web-technologies such as JS, Node JS, React JS, Redux, MongoDB and related libraries. See the last version in the "development" branch.
+This project's aim is to learn modern web-technologies such as JS, Node JS, React JS, Redux, MongoDB and related libraries. See the last version in the "**development**" branch.
 
 The following libraries and tools were used in the project:
 
 * Visual Studio Code IDE
 * Node JS v8.11.4
-* React JS / Redux
+* React JS v16.6.3 / Redux v4.0.1
 * Fontawesome for React v1.6.1   
 * Reactstrap (Bootstrap for React) v6.5.0
 * Express library v4.16.4
