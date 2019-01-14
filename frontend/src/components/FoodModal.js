@@ -63,29 +63,31 @@ import {connect} from 'react-redux';
     
       toggle() {          
         this.setState({
+          energy: 0,
+          carbo: 0,
+          fat: 0,
+          proteine: 0,          
+          weight: 0,
           modal: !this.state.modal          
         });        
-      }
+      }    
 
-      onChange = (event) => {
-        
-        let state = {};
-        state[event.target.name] = event.target.value;
-        this.setState(state);
-        let {...food} = this.props.foodlist[this.props.index]
-        let coef =  Math.ceil(this.state.weight * 0.1)
+      onChange = (event) => {        
+        let {...food} = this.props.foodlist[this.props.index]        
+        let coef =  event.target.value * 0.1        
         this.setState({            
-            energy: food.energy * coef,
-            carbo: food.carbohydrate * coef,
-            fat: food.fat * coef,
-            proteine: food.proteine * coef,
-            name: food.foodname
-        })       
+            energy: Math.ceil(food.energy * coef)/10,
+            carbo: Math.ceil(food.carbohydrate * coef)/10,
+            fat: Math.ceil(food.fat * coef)/10,
+            proteine: Math.ceil(food.proteine * coef)/10,
+            name: food.foodname,
+            weight:event.target.value
+        }) 
+              
     }
     
-      render() {
-        let {...food} = this.props.foodlist[this.props.index]        
-        
+      render() {        
+        let {...food} = this.props.foodlist[this.props.index]       
         return (
           <div>            
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -99,7 +101,7 @@ import {connect} from 'react-redux';
                         value={this.state.weight}/>
             
             
-              Energy {this.state.energy} Carboh. {this.state.carbo}	Fat {this.state.carbo} Proteine {this.state.proteine}
+              Energy {this.state.energy} Carboh. {this.state.carbo}	Fat {this.state.fat} Proteine {this.state.proteine}
               </ModalBody>
               <ModalFooter>
                 <Button color="primary" onClick={this.add}>Add</Button>{' '}                
